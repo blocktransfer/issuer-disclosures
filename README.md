@@ -6,9 +6,7 @@
 <h1>Block Transfer</h1>
 </div>
 
+Public, auditable corporate materials right from our issuers, archieved by year.
 
-
-
-
-
-Public, open-source, auditable proxy materials, achieves, and historic-authenticity guarantees right from our issuers, archieved by year.
+For all materials, please note:
+<strong>We Are Not Asking You for a Proxy and You are Requested Not To Send Us a Proxy</strong>

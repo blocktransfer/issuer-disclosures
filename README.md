@@ -7,6 +7,3 @@
 </div>
 
 Public, auditable corporate materials right from our issuers, archieved by year.
-
-For all materials, please note:
-<strong>We Are Not Asking You for a Proxy and You are Requested Not To Send Us a Proxy</strong>

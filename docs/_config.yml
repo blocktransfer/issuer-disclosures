@@ -1,11 +1,10 @@
 title: Block Transfer
 email: devs@blocktransfer.io
 description: >-
-  Stellar interface for Block Transfer,
+  ProxyVote for Block Transfer,
   a blockchain transfer agent for global financial markets.
 baseurl: ""
-url: "us.blocktransfer.io"
-twitter_username: blocktransfer
+url: "proxyvote.io"
 github_username:  blocktransfer
 
 # Build settings

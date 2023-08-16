@@ -19,50 +19,50 @@ This repository is managed by Block Transfer and provides a secure and organized
 
 ## Document Organization
 
-Documents are organized by client CIK and type for easy access. 
+Documents are organized by client CIK and type for easy access.
 Leading zeros are excluded from CIKs and file name months or days.
 
 ### Client A (CIK: XXXXXXXXXX)
 
 - Statements of Profit, Loss, and Retained Earnings (PNL)
-  - YYYY-MM-DD Quarterly.pdf
-  - YYYY-MM-DD Annual.pdf
+  - YYYY-MM-DD_Quarterly.pdf
+  - YYYY-MM-DD_Annual.pdf
 
 - Balance Sheets (BAL)
-  - YYYY-MM-DD Quarterly.pdf
-  - YYYY-MM-DD Annual.pdf
+  - YYYY-MM-DD_Quarterly.pdf
+  - YYYY-MM-DD_Annual.pdf
 
 - Issuer Reports (content)
-  - YYYY-MM-DD Quarterly.pdf
-  - YYYY-MM-DD Annual.pdf
-  - YYYY-MM-DD Other.pdf
+  - YYYY-MM-DD_Quarterly.pdf
+  - YYYY-MM-DD_Annual.pdf
+  - YYYY-MM-DD_Other.pdf
 
 - Definitive Proxy Statements (DEF)
-  - YYYY-MM-DD Annual.pdf
-  - YYYY-MM-DD Special.pdf
+  - YYYY-MM-DD_Annual.pdf
+  - YYYY-MM-DD_Special.pdf
 
 ### Client B (CIK: YYYYYYYYYY)
 
 - Statements of Profit, Loss, and Retained Earnings (PNL)
-  - YYYY-MM-DD Quarterly.pdf
-  - YYYY-MM-DD Annual.pdf
+  - YYYY-MM-DD_Quarterly.pdf
+  - YYYY-MM-DD_Annual.pdf
 
 - Balance Sheets (BAL)
-  - YYYY-MM-DD Quarterly.pdf
-  - YYYY-MM-DD Annual.pdf
+  - YYYY-MM-DD_Quarterly.pdf
+  - YYYY-MM-DD_Annual.pdf
 
 - Issuer Reports (content)
-  - YYYY-MM-DD Quarterly.pdf
-  - YYYY-MM-DD Annual.pdf
-  - YYYY-MM-DD Other.pdf
+  - YYYY-MM-DD_Quarterly.pdf
+  - YYYY-MM-DD_Annual.pdf
+  - YYYY-MM-DD_Other.pdf
 
 - Definitive Proxy Statements (DEF)
-  - YYYY-MM-DD Annual.pdf
-  - YYYY-MM-DD Special.pdf
+  - YYYY-MM-DD_Annual.pdf
+  - YYYY-MM-DD_Special.pdf
 
 ## Disclaimer
 
-The documents provided here are for informational purposes only and should not be considered as financial advice or an endorsement of any investment opportunity. Always consult with qualified financial professionals before making any investment decisions.
+The documents provided here are for informational purposes only and should not be considered as financial advice, an endorsement of any investment opportunity, or a securities offering solicitation. Always consult with qualified financial professionals before making any investment decisions.
 
 ## Contact
 

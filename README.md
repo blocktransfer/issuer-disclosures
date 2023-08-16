@@ -2,9 +2,7 @@
 <a href="https://www.blocktransfer.com"><img alt="Block Transfer" src="https://www.blocktransfer.com/hosted/images/39/3e0a939c35424d9a5b392a10a08e28/BT_GH.png" width="558" /></a>
 <br/></div>
 
-# Issuer Materials
-
-Welcome to the Issuer.info
+# Issuer.info
 
 This repository is managed by Block Transfer and provides a secure and organized way to publicly host disclosure documents, such as financial statements, posted by our transfer agent clients.
 

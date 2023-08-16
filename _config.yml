@@ -8,6 +8,4 @@ github_username: blocktransfer
 theme: minima
 plugins:
   - jekyll-feed
-include:
-  - *
 

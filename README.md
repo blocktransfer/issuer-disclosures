@@ -10,7 +10,11 @@ This repository is managed by Block Transfer and provides a secure and organized
 
 1. Browse through the list of available clients.
 2. Click on a client's folder to access their documents.
-3. Inside the client's folder, you will find subfolders for Profit, Loss, and Retained Earnings (PNL) statements and Balance Sheets (BAL).
+3. Inside the client's folder, you will find applicable subfolders for:
+- Statements of Profit, Loss, and Retained Earnings (PNL),
+- Balance Sheets (BAL),
+- Issuer reports (content), and
+- Definitive proxy statements (DEF).
 4. Click on the relevant subfolder to view and download specific documents.
 
 ## Document Organization
@@ -19,23 +23,41 @@ Documents are organized by client CIK and type for easy access. Leading zeros ar
 
 ### Client A (CIK: XXXXXXXX)
 
-- Profit and Loss (PNL)
+- Statements of Profit, Loss, and Retained Earnings (PNL)
   - YYYY-MM-DD Quarterly.pdf
   - YYYY-MM-DD Annual.pdf
 
 - Balance Sheets (BAL)
   - YYYY-MM-DD Quarterly.pdf
   - YYYY-MM-DD Annual.pdf
+
+- Issuer Reports (content)
+  - YYYY-MM-DD Quarterly.pdf
+  - YYYY-MM-DD Annual.pdf
+  - YYYY-MM-DD Other.pdf
+
+- Definitive Proxy Statements (DEF)
+  - YYYY-MM-DD Annual.pdf
+  - YYYY-MM-DD Special.pdf
 
 ### Client B (CIK: YYYYYYYY)
 
-- Profit and Loss (PNL)
+- Statements of Profit, Loss, and Retained Earnings (PNL)
   - YYYY-MM-DD Quarterly.pdf
   - YYYY-MM-DD Annual.pdf
 
 - Balance Sheets (BAL)
   - YYYY-MM-DD Quarterly.pdf
   - YYYY-MM-DD Annual.pdf
+
+- Issuer Reports (content)
+  - YYYY-MM-DD Quarterly.pdf
+  - YYYY-MM-DD Annual.pdf
+  - YYYY-MM-DD Other.pdf
+
+- Definitive Proxy Statements (DEF)
+  - YYYY-MM-DD Annual.pdf
+  - YYYY-MM-DD Special.pdf
 
 ## Disclaimer
 

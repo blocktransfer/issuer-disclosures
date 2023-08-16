@@ -1,0 +1,12 @@
+@font-face {
+  font-display: swap;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url("montserrat.eot");
+  src: url("montserrat.eot?#iefix") format("embedded-opentype"),
+       url("montserrat.woff2") format("woff2"),
+       url("montserrat.woff") format("woff"),
+       url("montserrat.ttf") format("truetype"),
+       url("montserrat.svg#Montserrat") format("svg");
+}

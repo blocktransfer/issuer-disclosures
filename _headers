@@ -1,7 +1,1 @@
-@font-face {
-  font-display: swap;
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 400;
-  src: url("montserrat.woff2") format('woff2');
-}
+<link rel="stylesheet" href="{% link custom.css %}">

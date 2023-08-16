@@ -19,7 +19,8 @@ This repository is managed by Block Transfer and provides a secure and organized
 
 ## Document Organization
 
-Documents are organized by client CIK and type for easy access. Leading zeros are excluded from CIKs and file name months or days.
+Documents are organized by client CIK and type for easy access. 
+Leading zeros are excluded from CIKs and file name months or days.
 
 ### Client A (CIK: XXXXXXXXXX)
 

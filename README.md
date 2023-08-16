@@ -10,7 +10,7 @@ This repository is managed by Block Transfer and provides a secure and organized
 
 1. Browse through the list of available clients.
 2. Click on a client's folder to access their documents.
-3. Inside the client's folder, you will find subfolders for Profit and Loss (PNL) statements and Balance Sheets (BAL).
+3. Inside the client's folder, you will find subfolders for Profit, Loss, and Retained Earnings (PNL) statements and Balance Sheets (BAL).
 4. Click on the relevant subfolder to view and download specific documents.
 
 ## Document Organization

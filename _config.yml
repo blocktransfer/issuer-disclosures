@@ -9,5 +9,5 @@ theme: minima
 plugins:
   - jekyll-feed
 include:
-  - "*"
+  - *
 

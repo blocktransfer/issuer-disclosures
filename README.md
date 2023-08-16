@@ -11,17 +11,17 @@ This repository is managed by Block Transfer and provides a secure and organized
 1. Browse through the list of available clients.
 2. Click on a client's folder to access their documents.
 3. Inside the client's folder, you will find applicable subfolders for:
-- Statements of Profit, Loss, and Retained Earnings (PNL),
-- Balance Sheets (BAL),
-- Issuer reports (content), and
-- Definitive proxy statements (DEF).
+- Statements of Profit, Loss, and Retained Earnings,
+- Balance Sheets,
+- Issuer reports, and
+- Definitive proxy statements.
 4. Click on the relevant subfolder to view and download specific documents.
 
 ## Document Organization
 
-Documents are organized by client CIK and type for easy access. Leading zeros are excluded from file name dates.
+Documents are organized by client CIK and type for easy access. Leading zeros are excluded from CIKs and file name months or days.
 
-### Client A (CIK: XXXXXXXX)
+### Client A (CIK: XXXXXXXXXX)
 
 - Statements of Profit, Loss, and Retained Earnings (PNL)
   - YYYY-MM-DD Quarterly.pdf
@@ -40,7 +40,7 @@ Documents are organized by client CIK and type for easy access. Leading zeros ar
   - YYYY-MM-DD Annual.pdf
   - YYYY-MM-DD Special.pdf
 
-### Client B (CIK: YYYYYYYY)
+### Client B (CIK: YYYYYYYYYY)
 
 - Statements of Profit, Loss, and Retained Earnings (PNL)
   - YYYY-MM-DD Quarterly.pdf

@@ -1,0 +1,13 @@
+title: Block Transfer
+email: hello@blocktransfer.dev
+description: "Issuer disclosure archive service."
+baseurl: ""
+url: "https://issuers.info"
+github_username: blocktransfer
+
+theme: minima
+plugins:
+  - jekyll-feed
+include:
+  - "*"
+

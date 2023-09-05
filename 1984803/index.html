@@ -5,18 +5,19 @@
   <script src="https://cdn.jsdelivr.net/npm/@iarna/toml@2.2.3/toml.browser.js"></script>
 </head>
 <body>
+  
   <h1>Laylor Corporation</h1>
+  
   <div id="issuerInfo"></div>
 
   <script>
-    const segments = url.split("/");
+    const segments = window.location.href.split("/");
     const CIK = segments[segments.length - 1];
     console.log("CIK:", CIK);
     
-    const externalUrl = `https://blocktransfer.com/assets/${CIK}.toml`;
-    console.log("Request URL:", externalUrl);
-    
-	fetch(externalUrl)
+	const tomlURL = `https://blocktransfer.com/assets/${CIK}.toml`;
+    console.log("Request URL:", tomlURL);
+    fetch(tomlURL)
       .then(response => response.text())
       .then(tomlData => {
         const parsedData = TOML.parse(tomlData);
@@ -25,14 +26,17 @@
       })
       .catch(err => console.error("An error occurred:", err));
   </script>
+  
+  
   <h2>Financial Statements</h2>
-	<h3>Profit, Loss, & Retained Earnings</h3>
-      <ul>
-        <li>
-	    <a href="PNL/2023-6-30_Annual.pdf">
-	      2023-6-30 Annual
-	    </a>
-	  </li>
-      </ul>
+  
+  <h3>Profit, Loss, & Retained Earnings</h3>
+       <ul>
+         <li>
+      <a href="PNL/2023-6-30_Annual.pdf">
+        2023-6-30 Annual
+      </a>
+    </li>
+       </ul>
 </body>
 </html>

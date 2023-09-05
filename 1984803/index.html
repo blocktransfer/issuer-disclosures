@@ -14,11 +14,9 @@
     
     const segments = window.location.href.split("/");
 	const CIK = segments[segments.length - 2];
-    console.log("Segments:", segments);
-    console.log("CIK:", CIK);
     
 	const tomlURL = `https://blocktransfer.com/assets/${CIK}.toml`;
-    console.log("Request URL:", tomlURL);
+    
     fetch(tomlURL)
       .then(response => response.text())
       .then(tomlData => {
@@ -27,6 +25,7 @@
         outputDiv.innerHTML = JSON.stringify(parsedData, null, 2);
       })
       .catch(err => console.error("An error occurred:", err));
+    console.log("Request:", response );
   </script>
   
   

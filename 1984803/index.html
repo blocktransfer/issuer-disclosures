@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Laylor Corporation Statements - Issuers.info</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toml/3.0.0/toml.min.js"></script>
+  <script type="text/javascript" src="components/toml-js/toml.js"></script>
 </head>
 <body>
   
@@ -22,7 +22,7 @@
     fetch(tomlURL)
       .then(response => response.text())
       .then(tomlData => {
-        const parsedData = TOML.parse(tomlData);
+        const parsedData = toml.parse(tomlData);
         const outputDiv = document.getElementById("issuerInfo");
         outputDiv.innerHTML = JSON.stringify(parsedData, null, 2);
       })

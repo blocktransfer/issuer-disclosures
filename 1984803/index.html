@@ -9,11 +9,11 @@
   <div id="issuerInfo"></div>
 
   <script>
-    const currentUrl = window.location.href;
-    const cik = currentUrl.split("/").pop();
-    console.log("CIK:", cik);
+    const segments = url.split("/");
+    const CIK = segments[segments.length - 1];
+    console.log("CIK:", CIK);
     
-    const externalUrl = `https://blocktransfer.com/assets/${cik}.toml`;
+    const externalUrl = `https://blocktransfer.com/assets/${CIK}.toml`;
     console.log("Request URL:", externalUrl);
     
 	fetch(externalUrl)

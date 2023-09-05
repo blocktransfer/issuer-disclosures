@@ -11,10 +11,11 @@
   <div id="issuerInfo"></div>
 
   <script>
-    const segments = segments.split("/");
-    const segmeants = window.location.href;
-    const CIK = segments[segmeants.length - 1];
-    console.log("Segments:", segmeants);
+    
+    const segments = window.location.href;
+    const segments1 = segments.split("/");
+	const CIK = segments1[segments1.length - 1];
+    console.log("Segments:", segments);
     console.log("CIK:", CIK);
     
 	const tomlURL = `https://blocktransfer.com/assets/${CIK}.toml`;

@@ -24,7 +24,8 @@
         return response.text();
       })
       .then(tomlData => {
-        const parsedData = toml.parse(tomlData);
+        console.log(tomlData)
+		const parsedData = toml.parse(tomlData);
         const outputDiv = document.getElementById("issuerInfo");
         outputDiv.innerHTML = JSON.stringify(parsedData, null, 2);
       })

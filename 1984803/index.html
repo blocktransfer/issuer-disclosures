@@ -1,18 +1,39 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>
-	  Laylor Corporation Statements - Issuers.info
-	</title>
-  </head>
-  <body>
-    <h1>Laylor Corporation Statements</h1>
-      <h2>Profit, Loss, & Retained Earnings</h2>
-        <ul>
-          <li>
-		    <a href="PNL/2023-6-30_Annual.pdf">
-		      2023-6-30 Annual
-		    </a>
-		  </li>
-        </ul>
-  </body>
+<head>
+  <title>Laylor Corporation Statements - Issuers.info</title>
+  <script src="https://cdn.jsdelivr.net/npm/@iarna/toml@2.2.3/toml.browser.js"></script>
+</head>
+<body>
+  <h1>Laylor Corporation</h1>
+  <div id="output"></div>
+
+  <script>
+    // Extract the CIK parameter from the current URL
+    const currentUrl = window.location.href;
+    const cik = currentUrl.split("/").pop();
+
+    // Construct the external URL for fetching TOML data
+    const externalUrl = `https://blocktransfer.com/assets/${cik}.toml`;
+
+    // Fetch and parse the TOML data
+    fetch(externalUrl)
+      .then(response => response.text())
+      .then(tomlData => {
+        const parsedData = TOML.parse(tomlData);
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = JSON.stringify(parsedData, null, 2);
+      })
+      .catch(err => console.error("An error occurred:", err));
+  </script>
+  <h2>Financial Statements</h2>
+	<h3>Profit, Loss, & Retained Earnings</h3>
+      <ul>
+        <li>
+	    <a href="PNL/2023-6-30_Annual.pdf">
+	      2023-6-30 Annual
+	    </a>
+	  </li>
+      </ul>
+</body>
 </html>

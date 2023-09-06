@@ -13,7 +13,5 @@ document.addEventListener("DOMContentLoaded", function() {
       return response.text();
     })
     .then(data => document.body.insertAdjacentHTML("afterend", data))
-    .catch(error => {
-      console.log("Fetch error:", error);
-    });
+    .catch(error => console.log("Fetch error:", error))
 });

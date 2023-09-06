@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const pathSplit = window.location.pathname.split("/");
   if (pathSplit.length > 2) {
     footerPath = "../footer.html";
-    document.querySelector("img[alt='logo']").src = "../logo-white.png";
   }
   console.log("Fetching footer from:", footerPath);
   fetch(footerPath)
@@ -17,6 +16,12 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
       if (data) {
         document.body.insertAdjacentHTML("beforeend", data);
+        const logoImg = document.querySelector("img[alt='logo']");
+        if (logoImg) {
+          logoImg.src = "../logo-white.png";
+        } else {
+          console.log("Logo image not found.");
+        }
       }
     })
     .catch(error => {

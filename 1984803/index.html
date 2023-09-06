@@ -98,11 +98,7 @@
 	const tomlURL = `https://blocktransfer.com/assets/${CIK}.toml`;
     
     fetch(tomlURL)
-      // .then(response => response.text())
-	  .then(response => {
-        console.log("HTTP Response:", response);  // Log the HTTP response here
-        return response.text();
-      })
+      .then(response => response.text())
       .then(tomlData => {
         console.log(tomlData)
 		const parsedData = toml.parse(tomlData);

@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
   let footerPath = "/footer.html";
-  let logoPath = "logo-white.png";
   const pathSplit = window.location.pathname.split("/");
   if (pathSplit.length > 2) {
     footerPath = "../footer.html";
-    logoPath = "../logo-white.png";
   }
   fetch(footerPath)
     .then(response => {
@@ -14,7 +12,11 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       return response.text();
     })
-    
+    .then(data => {
+      if (data) {
+        document.body.insertAdjacentHTML("beforeend", data);
+      }
+    })
     .catch(error => {
       console.log("Fetch error:", error);
     });

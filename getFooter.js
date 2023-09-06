@@ -1,7 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
-  fetch("../footer.html")
+  let footerPath = "/footer.html";
+  const pathSplit = window.location.pathname.split("/");
+  if (pathSplit.length > 2) {
+    footerPath = "../footer.html";
+    document.querySelector("img[alt='logo']").src = "../logo-white.png";
+  }
+  fetch(footerPath)
     .then(response => response.text())
     .then(data => {
-      document.getElementById("footer-container").innerHTML = data;
+      document.body.insertAdjacentHTML("beforeend", data);
     });
 });

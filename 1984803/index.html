@@ -4,28 +4,33 @@
   <title>Laylor Corporation Statements - Issuers.info</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    #container {
       max-width: 800px;
       margin: auto;
-	  font-size: 14pt;
+      flex: 1;
     }
-    img#company-logo {
-      max-width: 400px;
-      height: auto;
-	  display: block;
-	  margin: 64px auto;
+    footer {
+      width: 100%;
+      background-color: black;
+      color: white;
+      padding: 20px;
     }
-	section {
-      margin-left: 40px;
+    a {
+      color: #AC51FF;
     }
-	h2:not(:first-of-type) {
-      margin-top: 2em; 
-    }
-    p {
-      text-indent: 2em;
+    ul li {
+      font-size: 18pt;
     }
   </style>
 </head>
 <body>
+  <div id="container">
   <img id="company-logo" src="https://blocktransfer.com/imgs/logos/1984803.png" alt="Laylor Corporation Logo">
   <h2>Company Info</h2>
   <section>
@@ -95,7 +100,7 @@
       })
       .catch(err => console.error("An error occurred:", err));
   </script>
-  
+  </div>
   <div id="footer-container"></div>
   <script src="../getFooter.js"></script>
 

@@ -9,13 +9,11 @@
   <h1>Laylor Corporation</h1>
   
   <div id="issuerInfo"></div>
-
   <script>
-    
     const segments = window.location.href.split("/");
 	const CIK = segments[segments.length - 2];
     
-	const tomlURL = `https://blocktransfer.com/.well-known/stellar.toml`;
+	const tomlURL = `https://blocktransfer.com/assets/${CIK}.toml`;
     
     fetch(tomlURL)
       // .then(response => response.text())

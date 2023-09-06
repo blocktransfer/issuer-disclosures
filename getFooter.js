@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
   let footerPath = "/footer.html";
+  let logoPath = "logo-white.png";
   const pathSplit = window.location.pathname.split("/");
   if (pathSplit.length > 2) {
     footerPath = "../footer.html";
+    logoPath = "../logo-white.png";
   }
-  console.log("Fetching footer from:", footerPath);
   fetch(footerPath)
     .then(response => {
       if (!response.ok) {
@@ -18,9 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.insertAdjacentHTML("beforeend", data);
         const logoImg = document.querySelector("img[alt='logo']");
         if (logoImg) {
-          logoImg.src = "../logo-white.png";
-        } else {
-          console.log("Logo image not found.");
+          logoImg.src = logoPath;
         }
       }
     })

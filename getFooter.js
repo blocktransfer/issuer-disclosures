@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then(data => {
       if (data) {
-        document.body.insertAdjacentHTML("beforeend", data);
+        document.body.insertAdjacentHTML("afterend", data);
       }
     })
     .catch(error => {

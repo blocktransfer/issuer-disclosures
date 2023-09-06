@@ -2,17 +2,34 @@
 <html>
 <head>
   <title>Laylor Corporation Statements - Issuers.info</title>
+  <style>
+    body {
+      max-width: 800px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 30px;
+      padding: 10px;
+    }
+    img#company-logo {
+      max-width: 320px;
+      height: auto;
+	  margin: 0;
+    }
+  </style>
+  
+  
   <script type="text/javascript" src="../components/toml.js"></script>
+  
 </head>
 <body>
+  <img id="company-logo" src="https://blocktransfer.com/imgs/1984803.png" alt="Laylor Corporation Logo">
   
-  <h1>Laylor Corporation</h1>
   
   <div id="issuerInfo"></div>
   <script>
     const segments = window.location.href.split("/");
 	const CIK = segments[segments.length - 2];
-    
 	const tomlURL = `https://blocktransfer.com/assets/${CIK}.toml`;
     
     fetch(tomlURL)
@@ -29,6 +46,48 @@
       })
       .catch(err => console.error("An error occurred:", err));
   </script>
+  
+  
+  
+  <section>
+    <h2>Company Info</h2>
+    <p>
+      Laylor Corporation is an innovative tech company with a strong presence in business development and technology solutions. Operating under the jurisdiction of South Carolina, Laylor Corporation's commitment to excellence is demonstrated through its comprehensive suite of services and investments in cutting-edge technologies. The company operates with the goal of driving technological advancements and promoting sustainable practices within the business landscape.
+    </p>
+	<p>
+      At its core, Laylor Corporation specializes in providing tailored business development services and fostering growth across diverse industries. Through strategic investments and a robust suite of resources, Laylor Corporation assists entrepreneurs in realizing their innovative visions. The company excels in areas including investment management, secure financial transactions, cryptocurrency and blockchain integration, artificial intelligence implementation, software technology, app development, and clean energy initiatives.
+    </p>
+    <p>
+	  Laylor Corporation places a particular emphasis on supporting small and minority-owned businesses. The company's dedication to empowerment extends to individuals from various backgrounds, including those from underserved communities, women, veterans, and individuals with disabilities. By leveraging its expertise in advertising, marketing, and investment strategies, Laylor Corporation equips businesses with the tools and resources needed to expand their global reach and succeed in competitive markets.
+    </p>
+	<p>
+	  Concerning facilities, Laylor Corporation operates with a dynamic and forward-thinking approach, leveraging a virtual business office model. Its team of professionals work remotely from individual home offices, harnessing modern technology to collaborate effectively and efficiently. This approach not only contributes to operational flexibility but also aligns with the company's commitment to sustainability and innovative work practices.
+    </p>
+	  To support long-term value creation, Laylor Corporation is committed to fostering inclusive growth and technological innovation. With a strong focus on research and development, the company strives to remain at the forefront of emerging technologies, ensuring its clients benefit from the latest advancements. Its investments in clean energy initiatives and sustainable practices reflect a deep-seated commitment to environmental responsibility and a brighter future.
+    </p>
+  </section>
+
+  <section>
+    <h2>Insiders</h2>
+    <ul>
+      <li>Tammy Harris: Director, President, and Chairwoman</li>
+      <li>David Lengua: Director, Chief Sound Officer</li>
+      <li>Tivona Champayne: Director, Chief Design Officer</li>
+      <li>Alana Abner: Director, Chief Fashion Officer</li>
+      <li>Stacy Lee: Chief Risk Officer</li>
+      <li>Lilly Galvez: Chief Financial Officer and Human Resource Manager</li>
+      <li>Sheyontay Henson: Director</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Common Stock Info</h2>
+    <p>
+      Laylor Corporation has 100,000,000 authorized common stocks with no planned dividends.
+    </p>
+  </section>
+  
+  
   
   
   <h2>Financial Statements</h2>

@@ -2,13 +2,22 @@
 <html>
 <head>
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    #content {
+      flex: 1;
+      padding-bottom: 80px;
+    }
     footer {
       width: 100%;
       background-color: black;
       color: white;
       padding: 20px;
-      position: absolute;
-      bottom: 0;
       display: flex;
     }
     .footer-col {
@@ -18,9 +27,15 @@
     a {
       color: #AC51FF;
     }
+    ul li {
+      font-size: 18pt;
+    }
   </style>
 </head>
 <body>
+  <div id="content">
+    <!-- Your content here -->
+  </div>
   <footer>
     <div style="flex: 1; padding: 10px;">
       <img src="logo-white.png" alt="Logo" style="max-width: 100%;">
@@ -29,7 +44,7 @@
       <h4>Get Help</h4>
       <ul>
         <li><strong>Mail</strong>: 99 Wall St #4640, New York, NY 10005</li>
-        <li><strong>Email</strong>:
+        <li><strong>Email</strong>: 
           <a href="mailto:support@blocktransfer.com?subject=Help%20With%20Issuers.Info%20Regaurding%20%5BCOMPANY%5D">
             support@blocktransfer.com
           </a>

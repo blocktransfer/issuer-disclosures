@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     footerPath = "../footer.html";
   }
   fetch(footerPath)
-    .then(response => {
-      return response.text();
-    })
+    .then(response => response.text())
     .then(data => document.body.insertAdjacentHTML("afterend", data))
     .catch(error => console.log("Fetch error:", error))
 });

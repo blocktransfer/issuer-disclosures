@@ -14,15 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       return response.text();
     })
-    .then(data => {
-      if (data) {
-        document.body.insertAdjacentHTML("beforeend", data);
-        const logoImg = document.querySelector("img[alt='logo']");
-        if (logoImg) {
-          logoImg.src = logoPath;
-        }
-      }
-    })
+    
     .catch(error => {
       console.log("Fetch error:", error);
     });

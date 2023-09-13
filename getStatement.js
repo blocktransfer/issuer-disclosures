@@ -6,16 +6,16 @@ function redirectToMostRecentStatement() {
   fetch(parent)
     .then(response => response.text())
     .then(html => {
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = html;
-      const headerElements = tempDiv.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      const searchDiv = document.createElement("div");
+      searchDiv.innerHTML = html;
+      const headerElements = searchDiv.querySelectorAll("h1, h2, h3, h4, h5, h6");
       let targetSection = null;
       headerElements.forEach(function (header) {
         if (statementType === "PNL" && $(header).text().includes("Profit, Loss, & Retained Earnings")) {
           targetSection = header.nextElementSibling;
         } else if (statementType === "BAL" && $(header).text().includes("Balance Sheets")) {
           targetSection = header.nextElementSibling;
-        } else if (statementType === "content" && $(header).text().includes("Issuer Reports")) {
+        } else if (statementType === "CONTENT" && $(header).text().includes("Issuer Reports")) {
           targetSection = header.nextElementSibling;
         } else if (statementType === "DEF" && $(header).text().includes("Proxy Statements")) {
           targetSection = header.nextElementSibling;
@@ -43,10 +43,10 @@ function redirectToMostRecentStatement() {
             }
           }
         } else {
-          window.location.href = 'https://www.blocktransfer.com/404';
+          window.location.href = 404;
         }
       } else {
-        window.location.href = 'https://www.blocktransfer.com/404';
+        window.location.href = 404;
       }
     })
     .catch(error => {

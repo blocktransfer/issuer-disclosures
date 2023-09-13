@@ -43,10 +43,10 @@ function redirectToMostRecentStatement() {
             }
           }
         } else {
-          window.location.href = 404;
+          window.href = 'https://www.blocktransfer.com/404';
         }
       } else {
-        window.location.href = 404;
+        window.href = 'https://www.blocktransfer.com/404';
       }
     })
     .catch(error => {

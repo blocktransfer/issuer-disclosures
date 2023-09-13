@@ -6,7 +6,8 @@
   <script>
     function redirectToMostRecentStatement() {
       console.log(window.location.href)
-	  const statementType = window.location.href.split("/")[urlParts.length - 2];
+	  const pathParts = window.location.href.split("/")
+	  const statementType = pathParts[pathParts.length - 2];
       const parentIndexURL = "../index.html";
       fetch(parentIndexURL)
         .then(response => response.text())
@@ -63,6 +64,6 @@
   </script>
 </head>
 <body onload="redirectToMostRecentStatement()">
-  <h1>No Statement Found</h1>
+  <h1>No Statements Found</h1>
 </body>
 </html>

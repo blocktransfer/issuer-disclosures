@@ -30,11 +30,18 @@
                     if (targetSection) {
                         // Find all the links to PDF files within the section
                         const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
+						
 
-                        if (pdfLinks.length > 0) {
+                        if (pdfLinks.length) {
                             // Sort the links based on their text content (assumed to be date strings)
                             const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
-                                return new Date(b.textContent) - new Date(a.textContent);
+                                const getDateFromLink = (link) => {
+                                    const datePart = link.textContent.match(/\d{4}-\d{1,2}-\d{1,2}/); // Extract date in YYYY-M-D format
+                                    return datePart ? new Date(datePart[0]) : null;
+                                };
+                                const dateA = getDateFromLink(a);
+                                const dateB = getDateFromLink(b);
+                                return dateB - dateA; // Sort in descending order (most recent first)
                             });
 
                             // Get the link to the most recent PDF

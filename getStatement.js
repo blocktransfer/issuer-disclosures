@@ -43,13 +43,13 @@ function redirectToMostRecentStatement() {
             }
           }
         } else {
-          window.href = 'https://www.blocktransfer.com/404';
+          window.location.href = "https://www.blocktransfer.com/404";
         }
       } else {
-        window.href = 'https://www.blocktransfer.com/404';
+        window.location.href = "https://www.blocktransfer.com/404";
       }
     })
     .catch(error => {
-      window.location.href = 'https://www.blocktransfer.com/404';
+      window.location.href = "https://www.blocktransfer.com/404";
     });
 }

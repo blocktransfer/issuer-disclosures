@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>File Scanner</title>
+    <meta http-equiv="refresh" content="0;url=javascript:window.location.href=getMostRecentFile()">
+    <title>Redirecting to Most Recent File</title>
+    <script>
+        function getMostRecentFile() {
+            const filePattern = /^\d{4}-\d{1,2}-\d{1,2}_\w+\.pdf$/; // Regex pattern for the desired format
+            const files = [];
+
+            // Get a list of all files in the current directory
+            const filesInDirectory = new XMLHttpRequest();
+            filesInDirectory.open("GET", ".", false); // Synchronous request
+            filesInDirectory.send();
+            const lines = filesInDirectory.responseText.split('\n');
+
+            // Filter files that match the pattern
+            lines.forEach(function (line) {
+                if (filePattern.test(line)) {
+                    files.push(line);
+                }
+            });
+
+            // Sort files by modification date in descending order
+            files.sort(function (a, b) {
+                return new Date(b) - new Date(a);
+            });
+
+            // Return the URL of the most recent file
+            return files.length > 0 ? files[0] : '.';
+        }
+    </script>
 </head>
 <body>
-    <h1>Most Recent File</h1>
-    <p id="result"></p>
-
-    <script>
-        // Function to scan files in the same folder and find the most recent one
-        function findMostRecentFile() {
-            const folderPath = '.'; // Current folder
-            const filePattern = /\d{4}-\d{1,2}-\d{1,2}_\w+\.pdf/; // Regex pattern for the desired format
-
-            fetch('/files')
-                .then(response => response.json())
-                .then(data => {
-                    const files = data.files.filter(file => filePattern.test(file));
-
-                    if (files.length > 0) {
-                        // Sort files by modification date in descending order
-                        files.sort((a, b) => {
-                            return new Date(b.modifiedDate) - new Date(a.modifiedDate);
-                        });
-
-                        const mostRecentFile = files[0];
-                        document.getElementById('result').textContent = `Most recent file: ${mostRecentFile}`;
-                    } else {
-                        document.getElementById('result').textContent = 'No files found with the specified format.';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching file list:', error);
-                });
-        }
-
-        // Call the function when the page loads
-        window.onload = findMostRecentFile;
-    </script>
+    <p>If you are not redirected, <a href="javascript:window.location.href=getMostRecentFile()">click here</a>.</p>
 </body>
 </html>

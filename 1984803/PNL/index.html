@@ -12,18 +12,17 @@
             // Loop through header elements to find the target section
             let targetSection = null;
             headerElements.forEach(function (header) {
-                
                 if ($(header).text().includes("Profit, Loss, & Retained Earnings")) {
                     // Found the target section
                     targetSection = header.nextElementSibling;
                 } else {
-				  console.log(header);
-				}
+                    console.log(header);
+                }
             });
 
             if (targetSection) {
                 // Find all the links to PDF files within the section
-                const pdfLinks = targetSection.querySelectorAll("a[href$=".pdf"]");
+                const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
 
                 if (pdfLinks.length > 0) {
                     // Sort the links based on their text content (assumed to be date strings)
@@ -39,10 +38,10 @@
                         window.location.href = mostRecentPDF;
                     }
                 } else {
-                    console.log("No PDF files found in the section with a heading containing "Profit, Loss, & Retained Earnings".");
+                    console.log("No PDF files found in the section with a heading containing 'Profit, Loss, & Retained Earnings'.");
                 }
             } else {
-                console.log("Section with a heading containing "Profit, Loss, & Retained Earnings" not found.");
+                console.log("Section with a heading containing 'Profit, Loss, & Retained Earnings' not found.");
             }
         }
     </script>

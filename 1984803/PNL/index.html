@@ -1,51 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Redirecting to Most Recent File</title>
+    <title>Most Recent File</title>
     <script>
-        function redirectToMostRecentFile() {
+        function findMostRecentFile() {
             const filePattern = /^\d{4}-\d{1,2}-\d{1,2}_\w+\.pdf$/; // Regex pattern for the desired format
-            const files = [];
+            
+            // Use a fetch request to get the list of files in the current directory
+            fetch('./')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const htmlDoc = parser.parseFromString(data, 'text/html');
+                    const links = htmlDoc.querySelectorAll('a'); // Find all anchor tags on the page
 
-            // Get a list of all files in the current directory
-            const filesInDirectory = new XMLHttpRequest();
-            filesInDirectory.open("GET", ".", false); // Synchronous request
-            filesInDirectory.send();
-            const lines = filesInDirectory.responseText.split('\n');
+                    const pdfFiles = Array.from(links)
+                        .map(link => link.getAttribute('href'))
+                        .filter(href => filePattern.test(href));
 
-            console.log('All files in directory:', lines);
+                    // Sort PDF files by modification date (not supported in all browsers)
+                    pdfFiles.sort((a, b) => {
+                        return new Date(b) - new Date(a);
+                    });
 
-            // Filter files that match the pattern
-            lines.forEach(function (line) {
-                if (filePattern.test(line)) {
-                    console.log('Matched file:', line);
-                    files.push(line);
-                }
-            });
-
-            // Sort files by modification date in descending order
-            files.sort(function (a, b) {
-                return new Date(b) - new Date(a);
-            });
-
-            console.log('Sorted files:', files);
-
-            // Construct the URL of the most recent file
-            const mostRecentFile = files.length > 0 ? files[0] : '';
-
-            console.log('Most recent file:', mostRecentFile);
-
-            // Open the most recent file in a new tab/window
-            if (mostRecentFile) {
-                console.log('Opening most recent file:', mostRecentFile);
-                window.open(mostRecentFile, '_blank');
-            } else {
-                console.log('No most recent file found.');
-            }
+                    // Display the link to the most recent PDF file
+                    if (pdfFiles.length > 0) {
+                        const mostRecentFile = pdfFiles[0];
+                        const link = document.createElement('a');
+                        link.href = mostRecentFile;
+                        link.textContent = 'Most Recent PDF File';
+                        document.body.appendChild(link);
+                    } else {
+                        document.body.textContent = 'No PDF files found with the specified format.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching file list:', error);
+                });
         }
     </script>
 </head>
-<body onload="redirectToMostRecentFile()">
-    <h1>Redirecting to Most Recent File...</h1>
+<body onload="findMostRecentFile()">
+    <h1>Most Recent File</h1>
 </body>
 </html>

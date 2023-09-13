@@ -2,14 +2,26 @@
 <html>
 <head>
     <title>Redirecting to Most Recent PDF</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function redirectToMostRecentPDF() {
-            // Find the section with the heading "Profit, Loss, & Retained Earnings"
-            const section = document.querySelector('h3:contains("Profit, Loss, & Retained Earnings")').nextElementSibling;
+            // Find all header elements (h1, h2, h3, etc.)
+            const headerElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
 
-            if (section) {
+            // Loop through header elements to find the target section
+            let targetSection = null;
+            headerElements.forEach(function (header) {
+                // Use jQuery to perform a partial match using :contains
+                if ($(header).text().indexOf("Profit, Loss, & Retained Earnings") !== -1) {
+                    // Found the target section
+                    targetSection = header.nextElementSibling;
+                }
+            });
+
+            if (targetSection) {
                 // Find all the links to PDF files within the section
-                const pdfLinks = section.querySelectorAll('a[href$=".pdf"]');
+                const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
 
                 if (pdfLinks.length > 0) {
                     // Sort the links based on their text content (assumed to be date strings)
@@ -28,7 +40,7 @@
                     console.log('No PDF files found in the "Profit, Loss, & Retained Earnings" section.');
                 }
             } else {
-                console.log('Section with heading "Profit, Loss, & Retained Earnings" not found.');
+                console.log('Section with heading containing "Profit, Loss, & Retained Earnings" not found.');
             }
         }
     </script>

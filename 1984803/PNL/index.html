@@ -5,7 +5,6 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     function redirectToMostRecentStatement() {
-      console.log(window.location.href)
 	  const pathParts = window.location.href.split("/")
 	  const statementType = pathParts[pathParts.length - 2];
       const parentIndexURL = "../index.html";

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Most Recent File</title>
+    <title>Redirecting to Most Recent File</title>
     <script>
-        function getMostRecentFile() {
+        function redirectToMostRecentFile() {
             const filePattern = /^\d{4}-\d{1,2}-\d{1,2}_\w+\.pdf$/; // Regex pattern for the desired format
             const files = [];
 
@@ -13,9 +13,12 @@
             filesInDirectory.send();
             const lines = filesInDirectory.responseText.split('\n');
 
+            console.log('All files in directory:', lines);
+
             // Filter files that match the pattern
             lines.forEach(function (line) {
                 if (filePattern.test(line)) {
+                    console.log('Matched file:', line);
                     files.push(line);
                 }
             });
@@ -25,15 +28,24 @@
                 return new Date(b) - new Date(a);
             });
 
-            // Return the URL of the most recent file
-            return files.length > 0 ? files[0] : '';
+            console.log('Sorted files:', files);
+
+            // Construct the URL of the most recent file
+            const mostRecentFile = files.length > 0 ? files[0] : '';
+
+            console.log('Most recent file:', mostRecentFile);
+
+            // Open the most recent file in a new tab/window
+            if (mostRecentFile) {
+                console.log('Opening most recent file:', mostRecentFile);
+                window.open(mostRecentFile, '_blank');
+            } else {
+                console.log('No most recent file found.');
+            }
         }
     </script>
 </head>
-<body>
-    <h1>Most Recent File</h1>
-    <p>
-        <a href="javascript:void(0);" onclick="window.location.href = getMostRecentFile();">Click here to view the most recent file</a>
-    </p>
+<body onload="redirectToMostRecentFile()">
+    <h1>Redirecting to Most Recent File...</h1>
 </body>
 </html>

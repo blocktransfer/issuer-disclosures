@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Redirecting to Most Recent Statement</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function redirectToMostRecentStatement(reportType) {
-            const parentIndexURL = "../index.html";
-            fetch(parentIndexURL)
-                .then(response => response.text())
-                .then(html => {
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = html;
-                    
-                    const headerElements = tempDiv.querySelectorAll("h1, h2, h3, h4, h5, h6");
-                    
-                    let targetSection = null;
-                    headerElements.forEach(function (header) {
-                        if (reportType === "PNL" && $(header).text().includes("Profit, Loss, & Retained Earnings")) {
-                            targetSection = header.nextElementSibling;
-                        } else if (reportType === "BAL" && $(header).text().includes("Balance Sheets")) {
-                            targetSection = header.nextElementSibling;
-                        } else if (reportType === "ISSUER" && $(header).text().includes("Issuer Reports")) {
-                            targetSection = header.nextElementSibling;
-                        } else if (reportType === "DEF" && $(header).text().includes("Proxy Statements")) {
-                            targetSection = header.nextElementSibling;
-                        }
-                    });
-                    
-                    if (targetSection) {
-                        const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
-                        
-                        if (pdfLinks.length) {
-                            const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
-                                const getDateFromLink = (link) => {
-                                    const datePart = link.textContent.match(/\d{4}-\d{1,2}-\d{1,2}/);
-                                    return datePart ? new Date(datePart[0]) : null;
-                                };
-                                const dateA = getDateFromLink(a);
-                                const dateB = getDateFromLink(b);
-                                return dateB - dateA;
-                            });
-                            
-                            const mostRecentLink = sortedLinks[0];
-                            if (mostRecentLink) {
-                                const pdfLink = mostRecentLink.getAttribute("href");
-                                const parts = pdfLink.split("/");
-                                const name = parts[parts.length - 1];
-                                if (name) {
-                                    window.location.href = name;
-                                }
-                            }
-                        } else {
-                            console.log(`No PDF files found in the section with a heading containing '${reportType}' reports.`);
-                        }
-                    } else {
-                        console.log(`Section with a heading containing '${reportType}' reports not found.`);
-                    }
-                })
-                .catch(error => {
-                    console.error("Error loading parent index.html:", error);
-                });
-        }
-    </script>
+  <title>Redirecting to Most Recent Statement</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function redirectToMostRecentStatement() {
+      const currentPath = window.location.href;
+      const urlParts = currentPath.split("/");
+      const reportType = urlParts[urlParts.length];
+      const parentIndexURL = "../index.html";
+      fetch(parentIndexURL)
+        .then(response => response.text())
+        .then(html => {
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = html;
+          
+          const headerElements = tempDiv.querySelectorAll("h1, h2, h3, h4, h5, h6");
+          
+          let targetSection = null;
+          headerElements.forEach(function (header) {
+            if (reportType === "PNL" && $(header).text().includes("Profit, Loss, & Retained Earnings")) {
+              targetSection = header.nextElementSibling;
+            } else if (reportType === "BAL" && $(header).text().includes("Balance Sheets")) {
+              targetSection = header.nextElementSibling;
+            } else if (reportType === "content" && $(header).text().includes("Issuer Reports")) {
+              targetSection = header.nextElementSibling;
+            } else if (reportType === "DEF" && $(header).text().includes("Proxy Statements")) {
+              targetSection = header.nextElementSibling;
+            }
+          });
+          
+          if (targetSection) {
+            const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
+            
+            if (pdfLinks.length) {
+              const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
+                const getDateFromLink = (link) => {
+                  const datePart = link.textContent.match(/\d{4}-\d{1,2}-\d{1,2}/);
+                  return datePart ? new Date(datePart[0]) : null;
+                };
+                const dateA = getDateFromLink(a);
+                const dateB = getDateFromLink(b);
+                return dateB - dateA;
+              });
+              const mostRecentLink = sortedLinks[0];
+              if (mostRecentLink) {
+                const pdfLink = mostRecentLink.getAttribute("href");
+                const parts = pdfLink.split("/");
+                const name = parts[parts.length - 1];
+                if (name) {
+                  window.location.href = name;
+                }
+              }
+            } else {
+              console.log("No PDF files found in the section with a heading containing '${reportType}' reports.");
+            }
+          } else {
+            console.log("Section with a heading containing '${reportType}' reports not found.");
+          }
+        })
+        .catch(error => {
+          console.error("Error loading parent index.html:", error);
+        });
+    }
+  </script>
 </head>
-<body onload="redirectToMostRecentStatement('PNL')">
-    <h1>Redirecting to Most Recent Statement...</h1>
+<body onload="redirectToMostRecentStatement()">
+  <h1>No Statement Found</h1>
 </body>
 </html>

@@ -51,10 +51,10 @@
                 }
               }
             } else {
-              console.log("No PDF files found in the section with a heading containing '${statementType}' reports.");
+              console.log(`No PDF files found in the section with a heading containing "${statementType}" reports.`);
             }
           } else {
-            console.log(`Section with a heading containing '${statementType}' reports not found.`);
+            console.log(`Section with a heading containing "${statementType}" reports not found.`);
           }
         })
       .catch(error => {

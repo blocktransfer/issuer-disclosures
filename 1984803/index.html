@@ -48,6 +48,7 @@
     </p>
   </section>
   <h2>Insiders</h2>
+  <section>
     <h3>Executives</h3>
 	  <ul>
         <li>Stacy Lee - Chief Risk Officer</li>
@@ -61,6 +62,7 @@
         <li>Alana Abner - Chief Fashion Officer</li>
         <li>Sheyontay Henson</li>
       </ul>
+  </section>
   <h2>Stock Info</h2>
   <section>
     <h3>Common Stock</h3>
@@ -84,22 +86,13 @@
          </ul>
   </section>
   
-  <div id="issuerInfo"></div>
-  <script>
-    const segments = window.location.href.split("/");
-	const CIK = segments[segments.length - 2];
-	const tomlURL = `https://blocktransfer.com/assets/${CIK}.toml`;
-    fetch(tomlURL)
-      .then(response => response.text())
-      .then(tomlData => {
-        // console.log("Raw Issuer Data:", tomlData);
-		// const parsedData = toml.parse(tomlData); // does not work
-        // const outputDiv = document.getElementById("issuerInfo");
-        //  outputDiv.innerHTML = JSON.stringify(parsedData, null, 2);
-      })
-      .catch(err => console.error("An error occurred:", err));
-  </script>
-</div>
+  <h4>Compliance</h4>
+  <section>  
+    <h5>SIC Code</h5>
+    
+    
+  </section>
+
 <script src="../getFooter.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
             let targetSection = null;
             headerElements.forEach(function (header) {
                 // Use jQuery to perform a partial match using :contains
-                if ($(header).text().indexOf("Profit, Loss, & Retained Earnings") !== -1) {
+                if ($(header).text().includes("Profit, Loss, & Retained Earnings")) {
                     // Found the target section
                     targetSection = header.nextElementSibling;
                 }
@@ -37,10 +37,10 @@
                         window.location.href = mostRecentPDF;
                     }
                 } else {
-                    console.log('No PDF files found in the "Profit, Loss, & Retained Earnings" section.');
+                    console.log('No PDF files found in the section with a heading containing "Profit, Loss, & Retained Earnings".');
                 }
             } else {
-                console.log('Section with heading containing "Profit, Loss, & Retained Earnings" not found.');
+                console.log('Section with a heading containing "Profit, Loss, & Retained Earnings" not found.');
             }
         }
     </script>

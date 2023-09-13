@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;url=javascript:window.location.href=getMostRecentFile()">
-    <title>Redirecting to Most Recent File</title>
+    <title>Most Recent File</title>
     <script>
         function getMostRecentFile() {
             const filePattern = /^\d{4}-\d{1,2}-\d{1,2}_\w+\.pdf$/; // Regex pattern for the desired format
@@ -27,11 +26,14 @@
             });
 
             // Return the URL of the most recent file
-            return files.length > 0 ? files[0] : '.';
+            return files.length > 0 ? files[0] : '';
         }
     </script>
 </head>
 <body>
-    <p>If you are not redirected, <a href="javascript:window.location.href=getMostRecentFile()">click here</a>.</p>
+    <h1>Most Recent File</h1>
+    <p>
+        <a href="javascript:void(0);" onclick="window.location.href = getMostRecentFile();">Click here to view the most recent file</a>
+    </p>
 </body>
 </html>

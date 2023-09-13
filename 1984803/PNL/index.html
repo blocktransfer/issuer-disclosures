@@ -1,61 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Redirecting to Most Recent PDF</title>
-    <!-- Include jQuery -->
+    <title>Redirecting to Most Recent Statement</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function redirectToMostRecentPDF() {
-            // Load the parent directory's index.html
+        function redirectToMostRecentStatement(reportType) {
             const parentIndexURL = "../index.html";
             fetch(parentIndexURL)
                 .then(response => response.text())
                 .then(html => {
-                    // Create a temporary element to parse the HTML content
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = html;
-
-                    // Find all header elements (h1, h2, h3, etc.)
+                    
                     const headerElements = tempDiv.querySelectorAll("h1, h2, h3, h4, h5, h6");
-
-                    // Loop through header elements to find the target section
+                    
                     let targetSection = null;
                     headerElements.forEach(function (header) {
-                        if ($(header).text().includes("Profit, Loss, & Retained Earnings")) {
-                            // Found the target section
+                        if (reportType === "PNL" && $(header).text().includes("Profit, Loss, & Retained Earnings")) {
+                            targetSection = header.nextElementSibling;
+                        } else if (reportType === "BAL" && $(header).text().includes("Balance Sheets")) {
+                            targetSection = header.nextElementSibling;
+                        } else if (reportType === "ISSUER" && $(header).text().includes("Issuer Reports")) {
+                            targetSection = header.nextElementSibling;
+                        } else if (reportType === "DEF" && $(header).text().includes("Proxy Statements")) {
                             targetSection = header.nextElementSibling;
                         }
                     });
-
+                    
                     if (targetSection) {
-                        // Find all the links to PDF files within the section
                         const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
-						
-
+                        
                         if (pdfLinks.length) {
-                            // Sort the links based on their text content (assumed to be date strings)
                             const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
                                 const getDateFromLink = (link) => {
-                                    const datePart = link.textContent.match(/\d{4}-\d{1,2}-\d{1,2}/); // Extract date in YYYY-M-D format
+                                    const datePart = link.textContent.match(/\d{4}-\d{1,2}-\d{1,2}/);
                                     return datePart ? new Date(datePart[0]) : null;
                                 };
                                 const dateA = getDateFromLink(a);
                                 const dateB = getDateFromLink(b);
-                                return dateB - dateA; // Sort in descending order (most recent first)
+                                return dateB - dateA;
                             });
-
-                            // Get the link to the most recent PDF
-                            const mostRecentPDF = sortedLinks[0].getAttribute("href");
-
-                            // Redirect to the most recent PDF
-                            if (mostRecentPDF) {
-                                window.location.href = mostRecentPDF;
+                            
+                            const mostRecentLink = sortedLinks[0];
+                            if (mostRecentLink) {
+                                const pdfLink = mostRecentLink.getAttribute("href");
+                                const parts = pdfLink.split("/");
+                                const name = parts[parts.length - 1];
+                                if (name) {
+                                    window.location.href = name;
+                                }
                             }
                         } else {
-                            console.log("No PDF files found in the section with a heading containing 'Profit, Loss, & Retained Earnings'.");
+                            console.log(`No PDF files found in the section with a heading containing '${reportType}' reports.`);
                         }
                     } else {
-                        console.log("Section with a heading containing 'Profit, Loss, & Retained Earnings' not found.");
+                        console.log(`Section with a heading containing '${reportType}' reports not found.`);
                     }
                 })
                 .catch(error => {
@@ -64,7 +63,7 @@
         }
     </script>
 </head>
-<body onload="redirectToMostRecentPDF()">
-    <h1>Redirecting to Most Recent PDF...</h1>
+<body onload="redirectToMostRecentStatement('PNL')">
+    <h1>Redirecting to Most Recent Statement...</h1>
 </body>
 </html>

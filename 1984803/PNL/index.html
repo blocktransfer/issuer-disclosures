@@ -1,63 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Redirecting to Most Recent PDF</title>
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function redirectToMostRecentPDF() {
-            // Load the parent directory's index.html
-            const parentIndexURL = "../index.html";
-            fetch(parentIndexURL)
-                .then(response => response.text())
-                .then(html => {
-                    // Create a temporary element to parse the HTML content
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = html;
+function redirectToMostRecentPDF() {
+    // Load the parent directory's index.html
+    const parentIndexURL = "../index.html";
+    fetch(parentIndexURL)
+        .then(response => response.text())
+        .then(html => {
+            // Create a temporary element to parse the HTML content
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
 
-                    // Find all header elements (h1, h2, h3, etc.)
-                    const headerElements = tempDiv.querySelectorAll("h1, h2, h3, h4, h5, h6");
+            // Find all header elements (h1, h2, h3, etc.)
+            const headerElements = tempDiv.querySelectorAll("h1, h2, h3, h4, h5, h6");
 
-                    // Loop through header elements to find the target section
-                    let targetSection = null;
-                    headerElements.forEach(function (header) {
-                        if ($(header).text().includes("Profit, Loss, & Retained Earnings")) {
-                            // Found the target section
-                            targetSection = header.nextElementSibling;
-                        }
+            // Loop through header elements to find the target section
+            let targetSection = null;
+            headerElements.forEach(function (header) {
+                if ($(header).text().includes("Profit, Loss, & Retained Earnings")) {
+                    // Found the target section
+                    targetSection = header.nextElementSibling;
+                }
+            });
+
+            if (targetSection) {
+                // Find all the links to PDF files within the section
+                const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
+
+                if (pdfLinks.length > 0) {
+                    // Sort the links based on their text content (assumed to be date strings)
+                    const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
+                        return new Date(b.textContent) - new Date(a.textContent);
                     });
 
-                    if (targetSection) {
-                        // Find all the links to PDF files within the section
-                        const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
+                    // Get the link to the most recent PDF
+                    const mostRecentPDF = sortedLinks[0].getAttribute("href");
 
-                        if (pdfLinks.length > 0) {
-                            // Sort the links based on their text content (assumed to be date strings)
-                            const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
-                                return new Date(b.textContent) - new Date(a.textContent);
-                            });
-
-                            // Get the link to the most recent PDF
-                            const mostRecentPDF = sortedLinks[0].getAttribute("href");
-
-                            // Redirect to the most recent PDF
-                            if (mostRecentPDF) {
-                                window.location.href = mostRecentPDF;
-                            }
-                        } else {
-                            console.log("No PDF files found in the section with a heading containing 'Profit, Loss, & Retained Earnings'.");
-                        }
-                    } else {
-                        console.log("Section with a heading containing 'Profit, Loss, & Retained Earnings' not found.");
+                    // Redirect to the most recent PDF
+                    if (mostRecentPDF) {
+                        // Now you can use the child of the file path found
+                        const childFilePath = mostRecentPDF.split('/').pop();
+                        console.log("Child file path:", childFilePath);
+                        window.location.href = mostRecentPDF;
                     }
-                })
-                .catch(error => {
-                    console.error("Error loading parent index.html:", error);
-                });
-        }
-    </script>
-</head>
-<body onload="redirectToMostRecentPDF()">
-    <h1>Redirecting to Most Recent PDF...</h1>
-</body>
-</html>
+                } else {
+                    console.log("No PDF files found in the section with a heading containing 'Profit, Loss, & Retained Earnings'.");
+                }
+            } else {
+                console.log("Section with a heading containing 'Profit, Loss, & Retained Earnings' not found.");
+            }
+        })
+        .catch(error => {
+            console.error("Error loading parent index.html:", error);
+        });
+}

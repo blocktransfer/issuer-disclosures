@@ -5,7 +5,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     function redirectToMostRecentStatement() {
-      const statementType = window.location.href.split("/")[urlParts.length];
+      console.log(window.location.href)
+	  const statementType = window.location.href.split("/")[urlParts.length - 2];
       const parentIndexURL = "../index.html";
       fetch(parentIndexURL)
         .then(response => response.text())

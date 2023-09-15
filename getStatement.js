@@ -1,7 +1,8 @@
 function redirectToMostRecentStatement() {
   const pathParts = window.location.href.split("/");
+  console.log(pathParts);
   const statementType = pathParts[pathParts.length - 2].toUpperCase();
-  console.log(statementType);
+  
   const parent = "../index.html";
   fetch(parent)
     .then(response => response.text())

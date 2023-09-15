@@ -33,7 +33,8 @@ function redirectToMostRecentStatement() {
             const dateB = getDateFromLink(b);
             return dateB - dateA;
           });
-          const mostRecentLink = sortedLinks[0];
+          console.log(sortedLinks)
+		  const mostRecentLink = sortedLinks[0];
           if (mostRecentLink) {
             const pdfLink = mostRecentLink.getAttribute("href");
             const parts = pdfLink.split("/");

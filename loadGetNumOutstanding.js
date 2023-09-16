@@ -12,13 +12,11 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(data => {
         document.querySelector(`[asset-code="${code}"]`).textContent = data.outstanding;
       })
-      .catch(error => {
-        console.error("Error:", error);
-        document.querySelector(`[asset-code="${code}"]`).textContent = "Failed to load";
-      });
   }
   
   window.onerror = function (message, source, lineno, colno, error) {
-    document.querySelector(`[asset-code="${code}"]`).textContent = "Failed to load";
+    document.querySelectorAll('[id="getNumOutstanding"]').forEach(element => {
+      element.textContent = "Connection failed";
+    });
   };
 });

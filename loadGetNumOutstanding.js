@@ -11,13 +11,11 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(response => response.json())
       .then(data => setOutstanding(event, data.outstanding))
       .catch(error => {
-        console.log(error)
 		setOutstanding(event, "Failed to load");
       });
   }
   
   function setOutstanding(event, val) {
-	console.log(event)
-	event.target.textContent = val
+	event.target.textContent = val;
   }
 });

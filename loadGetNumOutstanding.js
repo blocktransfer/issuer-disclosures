@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     event.preventDefault();
     const securityType = event.target.getAttribute("security-type");
     getNumOutstanding(securityType);
+	getNumOutstandingLink.textContent = "Loading..."
   });
 
   function getNumOutstanding(securityType) {

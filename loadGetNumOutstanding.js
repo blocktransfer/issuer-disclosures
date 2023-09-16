@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("getNumOutstanding").addEventListener("click", function(event) {
     event.preventDefault();
-    event.target.textContent = "Loading..."
+    let target = event.target.textContent
+	target = "Loading..."
 	const code = event.target.getAttribute("asset-code");
     getNumOutstanding(code);
   });

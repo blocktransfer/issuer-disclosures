@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         target = data.outstanding;
       })
       .catch(error => {
-        console.error("Error:", error);
+        console.error(error);
         target = "Failed to load";
       });
   }

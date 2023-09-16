@@ -10,12 +10,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
       .then(data => setOutstanding(event, data.outstanding))
-      .catch(setOutstanding(event, "Failed to load"))
+      .catch(setOutstanding(event, 0))
   }
   
   function setOutstanding(event, val) {
-	
-	event.target.textContent = val;
-	console.log("setOutstanding called - ", val)
+	event.target.textContent = val ? val : "Failed to load";
   }
 });

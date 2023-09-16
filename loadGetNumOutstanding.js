@@ -17,4 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector(`[asset-code="${code}"]`).textContent = "Failed to load";
       });
   }
+  
+  window.onerror = function (message, source, lineno, colno, error) {
+    document.querySelector(`[asset-code="${code}"]`).textContent = "Failed to load";
+  };
 });

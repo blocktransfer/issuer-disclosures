@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
   function getNumOutstanding(code) {
-    const target = document.querySelector(`[asset-code="${code}"]`).textContent
+    let target = document.querySelector(`[asset-code="${code}"]`).textContent;
 	fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
       .then(data => {

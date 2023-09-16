@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("getNumOutstanding").addEventListener("click", function(event) {
     event.preventDefault();
-    const securityType = event.target.getAttribute("data-security-type");
+    const securityType = event.target.getAttribute("security-type");
     getNumOutstanding(securityType);
   });
 

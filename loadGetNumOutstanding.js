@@ -5,25 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     getNumOutstandingLink.textContent = "Loading..."
 	getNumOutstanding(securityType);
   });
-
-  function getNumOutstanding(securityType) {
-    const code = "1984803" + securityType;
-    fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
-      .then(response => response.json())
-      .then(data => {
-        
-		if (securityType === "ORD") {
-          document.getElementById("ORD_out").textContent = data.outstanding;
-        } else if (securityType === "PFD") {
-          document.getElementById("PFD_out").textContent = data.outstanding;
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-      });
-  }
-});
-
+  
   function getNumOutstanding(securityType) {
     const code = "1984803" + securityType;
     fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)

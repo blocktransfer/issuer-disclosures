@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("getNumOutstanding").addEventListener("click", function(event) {
     event.preventDefault();
-    const securityType = event.target.getAttribute("security-type");
+    const securityType = event.target.getAttribute("security-code");
     event.target.textContent = "Loading..."
 	getNumOutstanding(securityType);
   });
   
-  function getNumOutstanding(securityType) {
-    const code = "1984803" + securityType;
+  function getNumOutstanding(code) {
     fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
       .then(data => {

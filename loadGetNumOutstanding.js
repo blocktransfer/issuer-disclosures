@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("getNumOutstanding").addEventListener("click", function(event) {
     event.preventDefault();
     const securityType = event.target.getAttribute("security-type");
-    getNumOutstanding(securityType);
-	getNumOutstandingLink.textContent = "Loading..."
+    getNumOutstandingLink.textContent = "Loading..."
+	getNumOutstanding(securityType);
   });
 
   function getNumOutstanding(securityType) {

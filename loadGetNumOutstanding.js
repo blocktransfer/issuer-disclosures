@@ -11,21 +11,21 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
       .then(data => {
-        updateOutstandingValue(securityType, data.outstanding);
+        updateOutstandingField(securityType, data.outstanding);
       })
       .catch(error => {
         console.error("Error:", error);
-        updateOutstandingValue(securityType, "Error");
+        updateOutstandingField(securityType, "Error");
       });
   }
 
-  function updateOutstandingValue(securityType, value) {
+  function updateOutstandingField(securityType, num) {
     if (securityType === "ORD") {
-      document.getElementById("ORD_out").textContent = value;
+      document.getElementById("ORD_out").textContent = num;
     } else if (securityType === "PFD") {
-      document.getElementById("PFD_out").textContent = value;
+      document.getElementById("PFD_out").textContent = num;
     } else if (securityType === "Error") {
-	  document.getElementById("ORD_out").textContent = 90000000; //TEMP
+	  document.getElementById("ORD_out").textContent = "90000000"; //TEMP
 	}
   }
 });

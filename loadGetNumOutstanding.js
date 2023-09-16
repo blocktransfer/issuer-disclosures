@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("getNumOutstanding").addEventListener("click", function(event) {
     event.preventDefault();
-    const securityType = event.target.getAttribute("data-code");
+    const securityType = event.target.getAttribute("asset-code");
     event.target.textContent = "Loading..."
 	getNumOutstanding(securityType);
   });
@@ -10,19 +10,11 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
       .then(data => {
-        updateOutstandingField(code, data.outstanding);
+        document.querySelector('[asset-code="${code}"]').textContent = data.outstanding;
       })
       .catch(error => {
         console.error("Error:", error);
-        updateOutstandingField(code, 0);
+        document.querySelector('[asset-code="${code}"]').textContent = "Failed to load";
       });
-  }
-
-  function updateOutstandingField(securityType, num) {
-    if (num) {
-      document.getElementById(code).textContent = num;
-    } else {
-	  document.getElementById(code).textContent = "Failed to load";
-	}
   }
 });

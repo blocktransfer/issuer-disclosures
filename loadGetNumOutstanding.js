@@ -4,15 +4,14 @@ document.addEventListener("DOMContentLoaded", function() {
     let target = event.target.textContent
 	target = "Loading..."
 	const code = event.target.getAttribute("asset-code");
-    getNumOutstanding(code);
+    getNumOutstanding(code, target);
   });
   
-  function getNumOutstanding(code) {
-    let target = document.querySelector(`[asset-code="${code}"]`);
+  function getNumOutstanding(code, target) {
 	fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
       .then(data => {
-        target.textContent = data.outstanding;
+        target = data.outstanding;
       })
       .catch(error => {
         console.error(error);

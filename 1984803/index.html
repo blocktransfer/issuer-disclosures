@@ -73,8 +73,8 @@
   <section>
     <h3>Common Stock</h3>
     <section>
-      <h4>Authorized Shares</h4>
-        <p>100,000,000</p>
+      <h4>Authorized</h4>
+		<p>100,000,000</p>
       <h4>Class</h4>
         <p>Common</p>
       <h4>Dividend History</h4>
@@ -82,9 +82,13 @@
       <h4>Par</h4>
         <p>None</p>
 	  <h4>Shares Outstanding</h4>
-		<ul>
-          <li>FY2022 - #</li>
-        </ul>
+		<section>
+		  <h5>Now - <a id="ORD_out" href="#" id="getNumOutstanding">Click to load</a></h5>
+		  <h5>At end of Fiscal Year</h5>
+		    <ul>
+              <li>2022 - #</li>
+            </ul>
+	    </section>
 	  <h4>Ticker</h4>
         <p>LAYLOR<span class="small-dagger">&dagger;</span></p>
     </section>
@@ -92,6 +96,32 @@
   <p style="font-size: .8em; margin-top: 35px; text-indent: 0;"><span class="small-dagger">&dagger;</span>
     Designated only by Block Transfer in accordance with Issuer preference.
   </p>
+
+
+<script>
+function getNumOustanding(securityType) {
+  const code = "1984803" + securityType;
+  fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
+    .then(response => response.json())
+    .then(data => {
+      if (securityType === "ORD") {
+        document.getElementById("ORD_out").textContent = data.outstanding;
+      } else if (securityType === "PFD") {
+        document.getElementById("PFD_out").textContent = data.outstanding;
+      }
+    })
+    .catch(error => {
+      console.error("getNumOustanding error:", error);
+    });
+}
+
+document.getElementById('getNumSharesOutstanding').addEventListener('click', function() {
+    const stockClass = document.getElementById('stockClass').value;
+    loadStockInformation(stockClass);
+});
+</script>
+
+
   <h2>Insiders</h2>
     <section>
       <h3>Executives</h3>
@@ -147,11 +177,7 @@
     <h3>BBB: <a href="https://www.bbb.org/us/sc/summerville/profile/business-consultant/laylor-corporation-0663-34346587">Accredited</a></h3>
     <h3>Incorporation State: South Carolina</h3>
     <h3>SOS ID: 1108559</h3>
-    <h3>Operations</h3>
-      <section>
-        <h4>Not a shell company</h4>
-        <h4>Under $10M in assets</h4>
-      </section>
+    <h3>Not a shell company</h3>
   </section>
 <!-- todo: Load this dynamically from "https://blocktransfer.com/issuers/CIK" -->
 <!-- is it possible / easy to replace all uses of 1984803 with CIK from the path? -->

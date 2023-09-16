@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("getNumOutstanding").addEventListener("click", function(event) {
+  document.getElementById("getNumOutstanding").addEventListener("load", function(event) {
     event.preventDefault();
 	const code = event.target.getAttribute("asset-code");
     setNumOutstanding(code, event);
@@ -13,6 +13,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   function setField(event, val) {
-	event.target.textContent = val;
+	event.target.textContent = val ? val : "Failed to load";
   }
 });

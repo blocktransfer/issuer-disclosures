@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(response => response.json())
       .then(data => setOutstanding(event, data.outstanding))
       .catch(error => {
-		setOutstanding(event, "Failed to load");
+		const a = "Failed to load"
+		setOutstanding(event, a);
       });
   }
   

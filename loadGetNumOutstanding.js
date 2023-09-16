@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('[asset-code="${code}"]').textContent = data.outstanding;
       })
       .catch(error => {
-        console.error("Error:", error);
         document.querySelector('[asset-code="${code}"]').textContent = "Failed to load";
       });
   }

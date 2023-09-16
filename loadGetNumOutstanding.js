@@ -17,5 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
   
   function setOutstanding(event, val) {
 	event.target.textContent = val;
+	console.log("setOutstanding called - ", val)
   }
 });

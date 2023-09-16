@@ -14,6 +14,5 @@ document.addEventListener("DOMContentLoaded", function() {
   
   function setField(event, val) {
 	event.target.textContent = val ? val : "Failed to load";
-	event.removeAttribute('href');
   }
 });

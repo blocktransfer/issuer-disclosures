@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(response => response.json())
       .then(data => setOutstanding(event, data.outstanding))
       .catch(error => {
-		const a = "Failed to load"
-		setOutstanding(event, a);
+		setOutstanding(event, "Failed to load");
       });
   }
   
   function setOutstanding(event, val) {
+	console.log("val in setOutstanding:", val); // Debug statement
 	event.target.textContent = val;
 	console.log("setOutstanding called - ", val)
   }

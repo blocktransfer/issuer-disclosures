@@ -10,10 +10,11 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
       .then(data => {
-        document.querySelector('[asset-code="${code}"]').textContent = data.outstanding;
+        document.querySelector(`[asset-code="${code}"]`).textContent = data.outstanding;
       })
       .catch(error => {
-        document.querySelector('[asset-code="${code}"]').textContent = "Failed to load";
+        console.error("Error:", error);
+        document.querySelector(`[asset-code="${code}"]`).textContent = "Failed to load";
       });
   }
 });

@@ -83,7 +83,7 @@
         <p>None</p>
 	  <h4>Shares Outstanding</h4>
 		<section>
-		  <h5>Now - <a id="ORD_out" href="#" id="getNumOutstanding">Click to load</a></h5>
+		  <h5>Now - <a id="getNumOutstanding" href="#" type="ORD">Click to load</a></h5>
 		  <h5>At end of Fiscal Year</h5>
 		    <ul>
               <li>2022 - #</li>
@@ -96,32 +96,6 @@
   <p style="font-size: .8em; margin-top: 35px; text-indent: 0;"><span class="small-dagger">&dagger;</span>
     Designated only by Block Transfer in accordance with Issuer preference.
   </p>
-
-
-<script>
-function getNumOustanding(securityType) {
-  const code = "1984803" + securityType;
-  fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
-    .then(response => response.json())
-    .then(data => {
-      if (securityType === "ORD") {
-        document.getElementById("ORD_out").textContent = data.outstanding;
-      } else if (securityType === "PFD") {
-        document.getElementById("PFD_out").textContent = data.outstanding;
-      }
-    })
-    .catch(error => {
-      console.error("getNumOustanding error:", error);
-    });
-}
-
-document.getElementById('getNumSharesOutstanding').addEventListener('click', function() {
-    const stockClass = document.getElementById('stockClass').value;
-    loadStockInformation(stockClass);
-});
-</script>
-
-
   <h2>Insiders</h2>
     <section>
       <h3>Executives</h3>
@@ -181,6 +155,7 @@ document.getElementById('getNumSharesOutstanding').addEventListener('click', fun
   </section>
 <!-- todo: Load this dynamically from "https://blocktransfer.com/issuers/CIK" -->
 <!-- is it possible / easy to replace all uses of 1984803 with CIK from the path? -->
+<script src="../loadGetNumOutstanding.js"></script>
 <script src="../getFooter.js"></script>
 </body>
 </html>

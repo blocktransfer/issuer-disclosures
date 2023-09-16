@@ -7,16 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
   function getNumOutstanding(code) {
-    fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
+    const target = document.querySelector(`[asset-code="${code}"]`).textContent
+	fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
       .then(data => {
-        document.querySelector(`[asset-code="${code}"]`).textContent = data.outstanding;
+        target = data.outstanding;
       })
+      .catch(error => {
+        console.error("Error:", error);
+        target = "Failed to load";
+      });
   }
-  
-  window.onerror = function (message, source, lineno, colno, error) {
-    document.querySelectorAll('[id="getNumOutstanding"]').forEach(element => {
-      element.textContent = "Connection failed";
-    });
-  };
 });

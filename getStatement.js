@@ -1,28 +1,14 @@
-console.log("getStatement.js loaded and running.");
-
-console.log("_Starting redirectToMostRecentStatement...");
-
 const pathParts = window.location.href.split("/");
-console.log("Path Parts:", pathParts);
-
 const statementType = pathParts[pathParts.length - 2].toUpperCase();
-console.log("Statement Type:", statementType);
-
 const parent = "../index.html";
 fetch(parent)
-  .then(response => {
-    console.log("Fetch Response:", response);
-    return response.text();
-  })
+  .then(response => response.text())
   .then(html => {
-    console.log("HTML:", html);
     const searchLocalEnv = document.createElement("div");
     searchLocalEnv.innerHTML = html;
     const headerElements = searchLocalEnv.querySelectorAll("h1, h2, h3, h4, h5, h6");
     let targetSection = null;
     headerElements.forEach(function(header) {
-      console.log("Current Header:", $(header).text());
-
       if (statementType === "PNL" && $(header).text().includes("Profit, Loss, & Retained Earnings")) {
         targetSection = header.nextElementSibling;
       } else if (statementType === "BAL" && $(header).text().includes("Balance Sheets")) {
@@ -33,7 +19,6 @@ fetch(parent)
         targetSection = header.nextElementSibling;
       }
     });
- 
     const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
     if (pdfLinks.length) {
       const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
@@ -45,8 +30,7 @@ fetch(parent)
         const dateB = getDateFromLink(b);
         return dateB - dateA;
       });
-      console.log(sortedLinks)
- const mostRecentLink = sortedLinks[0];
+      const mostRecentLink = sortedLinks[0];
       if (mostRecentLink) {
         const pdfLink = mostRecentLink.getAttribute("href");
         const parts = pdfLink.split("/");
@@ -56,11 +40,7 @@ fetch(parent)
         }
       }
     } else {
-      console.log("No statement not found.");
- window.location.href = "https://www.blocktransfer.com/404";
+      window.location.href = "https://www.blocktransfer.com/404";
     }
   })
-  .catch(error => {
-    console.log("Fetch Error:", error);
- window.location.href = "https://www.blocktransfer.com/404";
-  });
+  .catch(window.location.href = "https://www.blocktransfer.com/404");

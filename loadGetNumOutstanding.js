@@ -1,18 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("getNumOutstanding").addEventListener("load", function(event) {
-    event.preventDefault();
-	const code = event.target.getAttribute("asset-code");
-    setNumOutstanding(code, event);
+  const elementsWithAssetCode = document.querySelectorAll("[asset-code]");
+
+  elementsWithAssetCode.forEach(element => {
+    const code = element.getAttribute("asset-code");
+    setNumOutstanding(code, element);
   });
-  
-  function setNumOutstanding(code, event) {
-	fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
+
+  function setNumOutstanding(code, element) {
+    fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
-      .then(data => setField(event, data.outstanding))
-      .catch(setField(event, 0))
+      .then(data => setField(element, data.outstanding))
+      .catch(() => setField(element, "Failed to load"));
   }
-  
-  function setField(event, val) {
-	event.target.textContent = val ? val : "Failed to load";
+
+  function setField(element, val) {
+    const currentDate = new Date().toLocaleDateString();
+    element.textContent = `${currentDate} - ${val}`;
   }
 });

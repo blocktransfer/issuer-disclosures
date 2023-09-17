@@ -13,7 +13,11 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function setField(element, val) {
-    const currentDate = new Date().toLocaleDateString();
+    const currentDate = new Date().toLocaleDateString("en-US", {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
     element.textContent = `${currentDate} - ${val}`;
   }
 });

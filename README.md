@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://www.blocktransfer.com"><img alt="Block Transfer" src="/bt-logo.png" width="558" /></a>
+<a href="https://www.blocktransfer.com"><img alt="Block Transfer" src="https://blocktransfer.com/logo.png" width="558" /></a>
 <br/></div>
 
 # Issuer Materials - <a href="https://issuers.info">Issuers.info

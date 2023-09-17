@@ -1,5 +1,5 @@
 console.log("getStatement.js loaded and running.");
-function redirectToMostRecentStatement() {
+function getStatement() {
   console.log("_Starting redirectToMostRecentStatement...");
   
   const pathParts = window.location.href.split("/");

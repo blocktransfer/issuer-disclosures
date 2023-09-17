@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const elementsWithAssetCode = document.querySelectorAll("[asset-code]");
-
-  elementsWithAssetCode.forEach(element => {
+  const elementsWithAssetCodeToReplaceWithOutstanding = document.querySelectorAll("[asset-code]");
+  elementsWithAssetCodeToReplaceWithOutstanding.forEach(element => {
     const code = element.getAttribute("asset-code");
     setNumOutstanding(code, element);
   });

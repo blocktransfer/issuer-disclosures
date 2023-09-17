@@ -15,10 +15,9 @@ function redirectToMostRecentStatement() {
     })
     .then(html => {
       console.log("HTML:", html);
-      const searchDiv = document.createElement("div");
-      searchDiv.innerHTML = html;
-      const headerElements = searchDiv.querySelectorAll("h1, h2, h3, h4, h5, h6");
-      
+      const searchLocalEnv = document.createElement("div");
+      searchLocalEnv.innerHTML = html;
+      const headerElements = searchLocalEnv.querySelectorAll("h1, h2, h3, h4, h5, h6");
       let targetSection = null;
       headerElements.forEach(function(header) {
         console.log("Current Header:", $(header).text());

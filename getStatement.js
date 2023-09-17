@@ -1,3 +1,4 @@
+console.log("getStatement.js loaded and running.");
 function redirectToMostRecentStatement() {
   console.log("_Starting redirectToMostRecentStatement...");
   

@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function setField(element, val) {
-    const currentDate = new Date().toLocaleDateString("en-US", {
+    console.log(val)
+	const currentDate = new Date().toLocaleDateString("en-US", {
       day: 'numeric',
       month: 'short',
       year: 'numeric',

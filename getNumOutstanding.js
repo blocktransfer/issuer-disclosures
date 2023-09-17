@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function setNumOutstanding(code, element) {
     fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
-      .then(data => setField(element, data.outstanding))
+      .then(data => setField(element, data))
       .catch(() => setField(element, "Failed to load"));
   }
 

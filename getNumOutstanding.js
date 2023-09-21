@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const elementsWithAssetCodeToReplaceWithOutstanding = document.querySelectorAll("[asset-code]");
   elementsWithAssetCodeToReplaceWithOutstanding.forEach(element => {
     const code = element.getAttribute("asset-code");
-    console.log(getNumOutstanding(code))
     getNumOutstanding(code).then(outstanding => setFields(element, outstanding, code));
   });
 
@@ -27,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
       month: "short",
       year: "numeric",
     });
-    currDatePlaceholder.textContent = `<span style="font-size: .8em">*As of ${currDate}</span>`;
-    const dateDisclaimerElement = document.getElementById(`dateDisclaimer${code}`);
-    dateDisclaimerElement.appendChild(currentDatePlaceholder);
+    dateDisclaimer.textContent = `<span style="font-size: .8em">*As of ${currDate}</span>`;
+    const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
+    disclaimerPageElement.appendChild(dateDisclaimer);
   }
 });

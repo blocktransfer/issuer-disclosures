@@ -19,6 +19,6 @@ document.addEventListener("DOMContentLoaded", function() {
       month: 'short',
       year: 'numeric',
     });
-    element.textContent = `${currentDate} - ${val}`;
+    element.textContent = `${val} Shares Outstanding on ${currentDate}`;
   }
 });

@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
       year: "numeric",
     });
     const dateDisclaimer = document.createElement("span");
-    dateDisclaimer.textContent = `<span style="font-size: .8em">*As of ${currDate}</span>`;
+    dateDisclaimer.innerHTML = `<span style="font-size: .8em">*As of ${currDate}</span>`;
     const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
     disclaimerPageElement.appendChild(dateDisclaimer);
   }

@@ -20,13 +20,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const isDecimal = parseInt(decimalPart);
     const formattedVal = isDecimal ? `${integerPart}.${decimalPart}` : integerPart;
     element.innerHTML = `${formattedVal} Shares Outstanding<span style="font-size: .8em">*</span>`;
-    const currDate = new Date().toLocaleDateString("en-US", {
+    const currDateTime = new Date().toLocaleDateString("en-US", {
       day: "numeric",
       month: "short",
       year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
     });
     const dateDisclaimer = document.createElement("span");
-    dateDisclaimer.innerHTML = `<p style="font-size: .8em; margin-top: -5px; text-indent: 0;">*As of ${currDate}</p>`;
+    dateDisclaimer.innerHTML = `<p style="font-size: .8em; margin-top: -5px; text-indent: 0;">*On ${currDateTime}</p>`;
     const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
     disclaimerPageElement.appendChild(dateDisclaimer);
   }

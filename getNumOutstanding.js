@@ -9,16 +9,21 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
       .then(response => response.json())
       .then(data => setField(element, data))
-      .catch(() => setField(element, "Failed to load"));
+      .catch(() => setField(element, 0));
   }
 
   function setField(element, val) {
-    console.log(val)
-	const currentDate = new Date().toLocaleDateString("en-US", {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-    });
-    element.textContent = `${val} Shares Outstanding on ${currentDate}`;
+	if (val) {
+      let [integerPart, decimalPart] = val.split(".");
+      integerPart = parseInt(integerPart).toLocaleString("en-US");
+      const isDecimal = parseInt(decimalPart);
+      const formattedVal = isDecimal ? `${integerPart}.${decimalPart}` : integerPart;
+      const currentDate = new Date().toLocaleDateString("en-US", {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      });
+      element.textContent = `${val} Shares Outstanding on ${currentDate}`;
+    }
   }
 });

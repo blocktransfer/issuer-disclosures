@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
     element.innerHTML = `${formattedVal} Shares Outstanding<span style="font-size: .8em">*</span>`;
     const currDateTime = new Date().toLocaleDateString("en-US", {
       day: "numeric",
-      month: "short",
+      month: "long",
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit"

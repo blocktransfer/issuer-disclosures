@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const elementsWithAssetCodeToReplaceWithOutstanding = document.querySelectorAll("[asset-code]");
   elementsWithAssetCodeToReplaceWithOutstanding.forEach(element => {
     const code = element.getAttribute("asset-code");
+    console.log(getNumOutstanding(code))
     getNumOutstanding(code).then(outstanding => setFields(element, outstanding, code));
   });
 
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
       month: "short",
       year: "numeric",
     });
-    currentDatePlaceholder.textContent = `<span style="font-size: .8em">*As of ${currentDate}</span>`;
+    currDatePlaceholder.textContent = `<span style="font-size: .8em">*As of ${currDate}</span>`;
     const dateDisclaimerElement = document.getElementById(`dateDisclaimer${code}`);
     dateDisclaimerElement.appendChild(currentDatePlaceholder);
   }

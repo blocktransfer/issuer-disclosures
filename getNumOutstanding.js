@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         month: 'short',
         year: 'numeric',
       });
-      element.textContent = `${formattedVal} Shares Outstanding on ${currentDate}`;
+      element.textContent = `${formattedVal} Shares Outstanding`;
     }
   }
 });

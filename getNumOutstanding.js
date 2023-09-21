@@ -2,28 +2,32 @@ document.addEventListener("DOMContentLoaded", function() {
   const elementsWithAssetCodeToReplaceWithOutstanding = document.querySelectorAll("[asset-code]");
   elementsWithAssetCodeToReplaceWithOutstanding.forEach(element => {
     const code = element.getAttribute("asset-code");
-    setNumOutstanding(code, element);
+    getNumOutstanding(code).then(outstanding => setFields(element, outstanding, code));
   });
 
-  function setNumOutstanding(code, element) {
-    fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
-      .then(response => response.json())
-      .then(data => setField(element, data))
-      .catch(() => setField(element, 0));
+  function getNumOutstanding(code) {
+    return fetch("https://api.blocktransfer.com/getNumOutstanding/" + code)
+      .then(response => {
+        if (response.status === 200) {
+          return response.text();
+        }
+      });
   }
 
-  function setField(element, val) {
-	if (val) {
-      let [integerPart, decimalPart] = val.split(".");
-      integerPart = parseInt(integerPart).toLocaleString("en-US");
-      const isDecimal = parseInt(decimalPart);
-      const formattedVal = isDecimal ? `${integerPart}.${decimalPart}` : integerPart;
-      const currentDate = new Date().toLocaleDateString("en-US", {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric',
-      });
-      element.textContent = `${formattedVal} Shares Outstanding`;
-    }
+  function setFields(element, data, code) {
+    let [integerPart, decimalPart] = data.split(".");
+    integerPart = parseInt(integerPart).toLocaleString("en-US");
+    const isDecimal = parseInt(decimalPart);
+    const formattedVal = isDecimal ? `${integerPart}.${decimalPart}` : integerPart;
+    element.innerHTML = `${formattedVal} Shares Outstanding<span style="font-size: .8em">*</span>`;
+    const currDatePlaceholder = document.createElement("span");
+    const currDate = new Date().toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+    currentDatePlaceholder.textContent = `<span style="font-size: .8em">*As of ${currentDate}</span>`;
+    const dateDisclaimerElement = document.getElementById(`dateDisclaimer${code}`);
+    dateDisclaimerElement.appendChild(currentDatePlaceholder);
   }
 });

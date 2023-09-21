@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", function() {
       let [integerPart, decimalPart] = val.split(".");
       integerPart = parseInt(integerPart).toLocaleString("en-US");
       const isDecimal = parseInt(decimalPart);
+      console.log("integerPart: ", integerPart)
+      console.log("decimalPart: ", decimalPart)
+      console.log("isDecimal: ", isDecimal)
       const formattedVal = isDecimal ? `${integerPart}.${decimalPart}` : integerPart;
       const currentDate = new Date().toLocaleDateString("en-US", {
         day: 'numeric',

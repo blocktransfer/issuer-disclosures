@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let [integerPart, decimalPart] = data.split(".");
     integerPart = parseInt(integerPart).toLocaleString("en-US");
     const isDecimal = parseInt(decimalPart);
-    const formattedVal = isDecimal ? `${integerPart}.${decimalPart}` : integerPart;
+    const formattedVal = isDecimal ? `${integerPart}.${decimalPart.replace(/0+$/, '')}` : integerPart;
     element.innerHTML = `${formattedVal} Shares Outstanding<span style="font-size: .8em">*</span>`;
     const currDateTime = new Date().toLocaleDateString("en-US", {
       day: "numeric",

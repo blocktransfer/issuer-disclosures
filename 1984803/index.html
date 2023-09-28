@@ -2,28 +2,9 @@
 <html>
 <head>
   <title>Laylor Corporation - Issuers.info</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
   <style>
-    a {
-      color: #AC51FF;
-    }
-    #main_content {
-      font-size: 14pt;
-      max-width: 800px;
-      margin: auto;
-    }
-    img#issuer-logo {
-      max-width: 400px;
-      height: auto;
-      display: block;
-      margin: 64px auto;
-    }
-    section {
-      margin-left: 40px;
-    }
-    h2:not(:first-of-type) {
-      margin-top: 2em;
-    }
-	p {
+    p {
 	  text-indent: 2em
 	}
 	.indent {
@@ -36,8 +17,8 @@
   </style>
 </head>
 <body>
-<div id="main_content">
-  <a href="https://laylorcorporation.com"><img id="issuer-logo" src="logo.png" alt="Laylor Corporation Logo"></a>
+<div class="main">
+  <a href="https://laylorcorporation.com"><img class="issuer-logo" src="logo.png" alt="Laylor Corporation Logo"></a>
   <h2>Laylor Corporation</h2>
     <!-- <h4>Previously Such and Such Co. (CA)</h4> -->
     <section>
@@ -150,6 +131,7 @@
     <h3>Incorporation State: South Carolina</h3>
     <h3>Fiscal Year End: December 31</h3>
   </section>
+<div>
 <!-- todo: Load this dynamically from "https://blocktransfer.com/issuers/CIK" -->
 <!-- is it possible / easy to replace all uses of 1984803 with CIK from the path? -->
 <script src="../getNumOutstanding.js"></script>

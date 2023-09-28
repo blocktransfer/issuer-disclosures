@@ -13,8 +13,8 @@ h2:not(:first-of-type) {
 img.issuer-logo {
   height: auto;
   display: block;
-  margin: 64px auto;
   max-width: 400px;
+  margin: 64px auto;
 }
 .indent {
   text-indent: 2em;
@@ -25,7 +25,10 @@ p {
 section {
   margin-left: 40px;
 }
-.small-dagger {
+.small-symbol {
   font-size: 0.64em;
   vertical-align: top;
+}
+.small-text {
+  font-size: 0.8em;
 }

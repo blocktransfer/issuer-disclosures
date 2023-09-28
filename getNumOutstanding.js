@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function() {
       minute: "2-digit"
     });
     const dateDisclaimer = document.createElement("span");
-    dateDisclaimer.innerHTML = `<p style="margin-top: -5px; text-indent: 0;"><span class="small-symbol">*</span><span class="small-text">As of ${currDateTime}.</span></p>`;
+    dateDisclaimer.innerHTML = `<p style="margin-top: -5px; text-indent: 0;">
+    <span class="small-symbol">*</span>
+    <span class="small-text">As of ${currDateTime}.</span></p>`;
     const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
     disclaimerPageElement.appendChild(dateDisclaimer);
   }

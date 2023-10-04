@@ -30,6 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
     const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
     disclaimerPageElement.appendChild(dateDisclaimer);
-    element.innerHTML = `${outstanding} Shares Outstanding<span style="font-size: .8em">*</span>`;
+    element.innerHTML = `${outstanding} Shares Outstanding<span class="med-symbol">*</span>`;
   }
 });

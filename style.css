@@ -29,6 +29,10 @@ section {
   font-size: 0.64em;
   vertical-align: top;
 }
+.med-symbol {
+  font-size: 0.8em;
+  vertical-align: top;
+}
 .small-text {
   font-size: 0.8em;
 }

@@ -37,13 +37,13 @@ fetch(parent)
           const mostRecentStatementLink = statementLinks[0];
           window.location.href = mostRecentStatementLink.split("/")[1];
         } else {
-          throw new Error("No statement links found.");
+          throw new Error("not found in bulleted list ${list}.");
         }
       } else {
-        throw new Error("No <ul> element found in statements.");
+        throw new Error("list of docs not found for ${DOC_DISPLAY_TYPE}.");
       }
     } else {
-      throw new Error("No statements section found.");
+      throw new Error("missing H3 for ${DOC_DISPLAY_TYPE} based on type ${DOC_TYPE}.");
     }
   })
   .catch(error => {

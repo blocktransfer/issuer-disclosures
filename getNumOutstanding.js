@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   function getNumOutstanding(code) {
-    return fetch("https://api.blocktransfer.com/outstanding/" + code)
+    return fetch(`https://api.blocktransfer.com/assets/${code}/outstanding`)
       .then(response => {
         if (response.status === 200) {
           return response.text();

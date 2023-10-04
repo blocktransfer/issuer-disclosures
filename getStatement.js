@@ -18,9 +18,9 @@ fetch(parent)
   .then(html => {
     const issuerInfo = document.createElement("div");
     issuerInfo.innerHTML = html;
-    const headerElements = issuerInfo.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    const H3s = issuerInfo.querySelectorAll("h3");
     let targetSection = null;
-    headerElements.forEach(function(header) {
+    H3s.forEach(function(header) {
       if (LOOKING_FOR_TXT && header.textContent.includes(LOOKING_FOR_TXT)) {
         targetSection = header.nextElementSibling;
       }
@@ -29,7 +29,6 @@ fetch(parent)
     if (bulletList) {
       const pdfLinkArr = Array.from(bulletList.querySelectorAll("a"));
       console.log("pdfLinkArr:", pdfLinkArr);
-      
       if (pdfLinkArr.length > 1) {
         pdfLinkArr.sort((a, b) => {
           const fileNameA = a.getAttribute("href").split("/").pop();
@@ -37,7 +36,6 @@ fetch(parent)
           return fileNameA.localeCompare(fileNameB);
         });
       }
-      
       if (pdfLinkArr.length) {
         const mostRecentStatement = pdfLinkArr[0];
         const statementLink = mostRecentStatement.getAttribute("href");

@@ -57,11 +57,27 @@
       <h4>Ticker</h4>
         <p>$LAYLOR<span class="small-symbol">&dagger;</span></p>
     </section>
-    <p style="margin-top: 35px; text-indent: 0;">
+    <div id="securitiesDisclaimer" style="margin-top: 35px; text-indent: 0;">
       <span class="small-symbol">&dagger;</span>
       <span class="small-text">Designated only by Block Transfer per Issuer preference.</span>
-    </p>
-    <span id="dateDisclaimer1984803ORD"></span>
+      <div id="dateDisclaimer"></div>
+    </div>
+    <script>
+      const now = new Date()
+        .toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+      });
+      document.getElementById("dateDisclaimer").innerHTML = `
+        <p style="margin-top: -5px; text-indent: 0;">
+          <span class="small-symbol">*</span>
+          <span class="small-text">As of ${now}.</span>
+        </p>
+      `;
+    </script>
   </section>  
   <h2>Insiders</h2>
     <section>

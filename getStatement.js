@@ -1,8 +1,7 @@
 const pathParts = window.location.href.split("/");
 const statementType = pathParts[pathParts.length - 2].toUpperCase();
-const parentDir = new URL("../", import.meta.url);
-const issuerInfo = new URL("index.html", parentDir);
-fetch(issuerInfo.href)
+const parent = "/../index.html";
+fetch(parent)
   .then(response => response.text())
   .then(html => {
     const searchLocalEnv = document.createElement("div");
@@ -11,6 +10,7 @@ fetch(issuerInfo.href)
     let targetSection = null;
     console.log("Got statementType:", statementType)
     headerElements.forEach(function(header) {
+      console.log("Found header:", header)
       if (statementType === "PNL" && $(header).text().includes("Profit, Loss, & Retained Earnings")) {
         targetSection = header.nextElementSibling;
       } else if (statementType === "BAL" && $(header).text().includes("Balance Sheets")) {

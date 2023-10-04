@@ -40,10 +40,10 @@ fetch(parent)
           throw new Error("links not found in ${DOC_TYPE} <ul> list.");
         }
       } else {
-        throw new Error("list of docs not found for ${DOC_DISPLAY_TYPE}.");
+        throw new Error("no ${DOC_DISPLAY_TYPE} <ul> child.");
       }
     } else {
-      throw new Error("missing H3 for ${DOC_DISPLAY_TYPE} based on type ${DOC_TYPE}.");
+      throw new Error("no ${DOC_DISPLAY_TYPE} H3 for type ${DOC_TYPE}.");
     }
   })
   .catch(error => {

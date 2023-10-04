@@ -25,7 +25,7 @@ fetch(parent)
         statements = header.nextElementSibling;
       }
     });
-    if (statements) {
+    if (DOC_DISPLAY_TYPE && statements) {
       const list = statements.querySelector("ul");
       if (list) {
         const statementLinks = Array.from(list.querySelectorAll("a[href]"))
@@ -43,7 +43,7 @@ fetch(parent)
         throw new Error("no ${DOC_DISPLAY_TYPE} <ul> child.");
       }
     } else {
-      throw new Error("no ${DOC_DISPLAY_TYPE} H3 for type ${DOC_TYPE}.");
+      throw new Error("no H3 content for type ${DOC_TYPE}.");
     }
   })
   .catch(error => {

@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
     return fetch(`https://api.blocktransfer.com/assets/${code}`)
       .then(response => (response.status === 200 ? response.text() : undefined))
       .then(assetInfo => {
-        console.log(assetInfo);
-        return assetInfo.text();
+        console.log(assetInfo.outstanding);
+        return assetInfo.outstanding;
       })
   }
 

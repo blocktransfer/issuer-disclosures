@@ -37,16 +37,16 @@ fetch(parent)
           const mostRecentStatementLink = statementLinks[0];
           window.location.href = mostRecentStatementLink.split("/")[1];
         } else {
-          throw new Error("links not found in ${DOC_TYPE} <ul> list.");
+          throw new Error(`Links not found in ${DOC_TYPE} <ul> list.`);
         }
       } else {
-        throw new Error("no ${DOC_DISPLAY_TYPE} <ul> child.");
+        throw new Error(`No ${DOC_DISPLAY_TYPE} <ul> child.`);
       }
     } else {
-      throw new Error("no H3 content for type ${DOC_TYPE}.");
+      throw new Error(`No H3 content for type ${DOC_TYPE}.`);
     }
   })
   .catch(error => {
-    console.log("Error finding statement:" error);
+    console.log("Error finding statement:", error);
     window.location.href = "https://www.blocktransfer.com/404?utm_source=issuersInfo404&utm_medium=error";
   });

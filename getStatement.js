@@ -43,7 +43,7 @@ fetch(parent)
       }
       if (statementLink) {
         const file = statementLink.getAttribute("href").split("/")[parts.length - 1];
-        console.log("Got mostRecentLink:", statementLink)
+        console.log("Got mostRecentLink:", statementLink);
         if (file) {
           console.log("Success": file);//window.location.href = file;
         }

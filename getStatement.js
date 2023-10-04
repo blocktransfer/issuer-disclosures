@@ -48,5 +48,6 @@ fetch(parent)
     }
   })
   .catch(error => {
-    window.location.href = "https://www.blocktransfer.com/404";
+    console.log(error)
+    //window.location.href = "https://www.blocktransfer.com/404";
   });

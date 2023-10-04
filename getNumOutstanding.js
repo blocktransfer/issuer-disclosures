@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   function getNumOutstanding(code) {
-    return fetch(`https://api.blocktransfer.com/assets/${code}/outstanding`)
+    return fetch(`https://api.blocktransfer.com/assets/${code}`)
       .then(response => {
         if (response.status === 200) {
-          return response.text();
+          return response.text().outstanding;
         }
       });
   }

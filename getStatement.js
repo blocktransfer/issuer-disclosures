@@ -9,19 +9,17 @@ function headerContainsText(header, text) {
 fetch(parent)
   .then(response => response.text())
   .then(html => {
-    const searchLocalEnv = document.createElement("div");
-    searchLocalEnv.innerHTML = html;
-    const headerElements = searchLocalEnv.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    const issuerInfo = document.createElement("div");
+    issuerInfo.innerHTML = html;
+    const headerElements = issuerInfo.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    const headerTextMap = {
+      "PNL": "Profit, Loss, & Retained Earnings",
+      "BAL": "Balance Sheets",
+      "CONTENT": "Issuer Reports",
+      "DEF": "Proxy Statements",
+    };
     let targetSection = null;
     headerElements.forEach(function(header) {
-      console.log("Found header:", header)
-      
-      const headerTextMap = {
-        "PNL": "Profit, Loss, & Retained Earnings",
-        "BAL": "Balance Sheets",
-        "CONTENT": "Issuer Reports",
-        "DEF": "Proxy Statements",
-      };
       const targetText = headerTextMap[statementType];
       if (targetText && header.textContent.includes(targetText)) {
         console.log("Found desired item:", header);
@@ -47,6 +45,7 @@ fetch(parent)
   
     if (ulElement) {
       const pdfLinkElements = Array.from(ulElement.querySelectorAll('a[href$=".pdf"]'));
+      console.log("pdfLinkElements:", pdfLinkElements)
       if (pdfLinkElements.length) {
         pdfLinkElements.sort((a, b) => {
           const fileNameA = a.getAttribute("href").split("/").pop();

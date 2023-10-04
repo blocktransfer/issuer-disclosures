@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   }
 
-  function setFields(element, outstanding, code) {
+  function setFields(element, data, code) {
     astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
     let [integerPart, decimalPart] = data.split(".");
     integerPart = parseInt(integerPart).toLocaleString("en-US");

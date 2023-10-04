@@ -45,32 +45,30 @@ fetch(parent)
       console.log("No <ul> element found in the section.");
     }
   
-  if (ulElement) {
-    const pdfLinkElements = Array.from(ulElement.querySelectorAll('a[href$=".pdf"]'));
+    if (ulElement) {
+      const pdfLinkElements = Array.from(ulElement.querySelectorAll('a[href$=".pdf"]'));
+      if (pdfLinkElements.length) {
+        pdfLinkElements.sort((a, b) => {
+          const fileNameA = a.getAttribute("href").split("/").pop();
+          const fileNameB = b.getAttribute("href").split("/").pop();
+          return fileNameA.localeCompare(fileNameB);
+        });
     
-    if (pdfLinkElements.length > 0) {
-      // Sort the PDF links based on their href attribute (file name)
-      pdfLinkElements.sort((a, b) => {
-        const fileNameA = a.getAttribute("href").split("/").pop(); // Get the file name
-        const fileNameB = b.getAttribute("href").split("/").pop(); // Get the file name
-        return fileNameA.localeCompare(fileNameB); // Sort alphabetically
-      });
-  
-      const mostRecentPdfLink = pdfLinkElements[0];
-      const pdfLink = mostRecentPdfLink.getAttribute('href');
-      console.log("Most recent PDF link:", pdfLink);
-      // You can now use 'pdfLink' for further processing, like opening the PDF.
+        const mostRecentPdfLink = pdfLinkElements[0];
+        const pdfLink = mostRecentPdfLink.getAttribute('href');
+        console.log("Most recent PDF link:", pdfLink);
+        // You can now use 'pdfLink' for further processing, like opening the PDF.
+      } else {
+        console.log("No PDF links found in the section.");
+      }
     } else {
-      console.log("No PDF links found in the section.");
+      console.log("No <ul> element found in the section.");
     }
-  } else {
-    console.log("No <ul> element found in the section.");
-  }
-  
-  console.log("FOUND: ", mostRecentPdfLink)
     
-    
-    
+    console.log("FOUND: ", mostRecentPdfLink)
+      
+       
+       
     const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
     if (pdfLinks.length) {
       const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
@@ -83,12 +81,12 @@ fetch(parent)
         return dateB - dateA;
       });
       console.log("Got sortedLinks:", sortedLinks)
+         
+         
       
       
-      
-      
-      const mostRecentLink = sortedLinks[0];
-      if (mostRecentLink) {
+    const mostRecentLink = sortedLinks[0];
+    if (mostRecentLink) {
         const file = mostRecentLink.getAttribute("href").split("/")[parts.length - 1];
         console.log("Got mostRecentLink:", mostRecentLink)
         if (file) {

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return fetch(`https://api.blocktransfer.com/assets/${code}`)
       .then(response => {
         if (response.status === 200) {
+          console.log(response)
           return response.text().outstanding;
         }
       });

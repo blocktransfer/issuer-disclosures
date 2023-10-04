@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let [integerPart, decimalPart] = outstandingRaw.split(".");
     integerPart = parseInt(integerPart).toLocaleString("en-US");
     const isDecimal = parseInt(decimalPart);
-    const outstanding = isDecimal ? `${integerPart}.${decimalPart.replace(/0+$/, '')}` : integerPart;
+    const outstanding = isDecimal ? `${integerPart}.${decimalPart.replace(/0+$/, "")}` : integerPart;
     const currDateTime = new Date().toLocaleDateString("en-US", {
       day: "numeric",
       month: "long",

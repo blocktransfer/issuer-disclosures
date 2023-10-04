@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <span class="small-text">As of ${currDateTime}.</span></p>
     `;
     const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
-    element.innerHTML = `${outstanding} Shares Outstanding<span style="font-size: .8em">*</span>`;
     disclaimerPageElement.appendChild(dateDisclaimer);
+    element.innerHTML = `${outstanding} Shares Outstanding<span style="font-size: .8em">*</span>`;
   }
 });

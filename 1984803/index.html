@@ -58,11 +58,14 @@
         <p>$LAYLOR<span class="small-symbol">&dagger;</span></p>
     </section>
     <div id="securitiesDisclaimer" style="margin-top: 35px; text-indent: 0;">
-      <span class="small-symbol">&dagger;</span>
-      <span class="small-text">Designated only by Block Transfer per Issuer preference.</span>
+      <div id="tickerDisclaimer"></div>
       <div id="dateDisclaimer"></div>
     </div>
     <script>
+      document.getElementById("tickerDisclaimer").innerHTML = `
+        <span class="small-symbol">&dagger;</span>
+        <span class="small-text">Designated only by Block Transfer per Issuer preference.</span>
+      `;
       const now = new Date()
         .toLocaleDateString("en-US", {
           day: "numeric",
@@ -77,6 +80,7 @@
           <span class="small-text">As of ${now}.</span>
         </p>
       `;
+
     </script>
   </section>  
   <h2>Insiders</h2>

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const elementsWithAssetCodeToReplaceWithOutstanding = document.querySelectorAll("[asset-code]");
   elementsWithAssetCodeToReplaceWithOutstanding.forEach(element => {
     const code = element.getAttribute("asset-code");
-    getNumOutstanding(code).then(outstanding => setFields(element, outstanding, code));
+    getNumOutstanding(code).then(outstanding => setOutstanding(element, outstanding, code));
   });
 
   function getNumOutstanding(code) {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(assetInfo => JSON.parse(assetInfo).outstanding)
   }
 
-  function setFields(element, outstanding, code) {
+  function setOutstanding(element, outstanding, code) {
     astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
     element.innerHTML = `${formatNum(outstanding)} Shares Outstanding${astrix}`;
   }

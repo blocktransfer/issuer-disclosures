@@ -13,22 +13,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function setFields(element, outstanding, code) {
     astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
-    const now = new Date().toLocaleDateString("en-US", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
     const dateDisclaimer = document.createElement("span");
-    dateDisclaimer.innerHTML = `
-      <p style="margin-top: -5px; text-indent: 0;">
-        <span class="small-symbol">*</span>
-        <span class="small-text">As of ${now}.</span>
-      </p>
-    `;
-    const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
-    disclaimerPageElement.appendChild(dateDisclaimer);
+    dateDisclaimer.innerHTML = getDateDisclaimer();
+    //todo: make this page-wide & incorporate float
+    const disclaimerReference = document.getElementById(`dateDisclaimer${code}`);
+    disclaimerReference.appendChild(dateDisclaimer);
     element.innerHTML = `${formatNum(outstanding)} Shares Outstanding${astrix}`;
   }
   
@@ -37,5 +26,22 @@ document.addEventListener("DOMContentLoaded", function() {
     integerPart = parseInt(integerPart).toLocaleString("en-US");
     const isDecimal = parseInt(decimalPart);
     return isDecimal ? `${integerPart}.${decimalPart.replace(/0+$/, "")}` : integerPart;
+  }
+  
+  function getDateDisclaimer() {
+    const now = new Date()
+      .toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+    return `
+      <p style="margin-top: -5px; text-indent: 0;">
+        <span class="small-symbol">*</span>
+        <span class="small-text">As of ${getNow()}.</span>
+      </p>
+    `;
   }
 });

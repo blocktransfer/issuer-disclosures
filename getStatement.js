@@ -25,30 +25,35 @@ fetch(parent)
         statements = header.nextElementSibling;
       }
     });
-    const list = statements.querySelector("ul");
-    if (list) {
-      const statementLinks = Array.from(list.querySelectorAll("a"));
-      console.log("statementLinks:", statementLinks);
-      if (statementLinks.length > 1) {
-        statementLinks.sort((a, b) => {
-          const fileNameA = a.getAttribute("href").split("/").pop();
-          const fileNameB = b.getAttribute("href").split("/").pop();
-          return fileNameA.localeCompare(fileNameB);
-        });
-      }
-      if (statementLinks.length) {
-        const mostRecentStatement = statementLinks[0];
-        const statementLink = mostRecentStatement.getAttribute("href");
-        console.log("Most recent PDF link:", statementLink);
-      }
-      if (statementLink) {
-        const file = statementLink.getAttribute("href").split("/")[parts.length - 1];
-        console.log("Got mostRecentLink:", statementLink);
-        if (file) {
-          console.log("Success": file);//window.location.href = file;
+    if (statements) {
+      const list = statements.querySelector("ul");
+      if (list) {
+        const statementLinks = Array.from(list.querySelectorAll("a[href]"))
+        .map(a => a.getAttribute("href"));
+        console.log("statementLinks:", statementLinks);
+
+        if (statementLinks.length > 1) {
+          statementLinks.sort((a, b) => a.localeCompare(b));
         }
+
+        if (statementLinks.length) {
+          const mostRecentStatementLink = statementLinks[0];
+          console.log("Most recent statement link:", mostRecentStatementLink);
+
+          // Perform the desired action here with mostRecentStatementLink.
+        } else {
+          throw new Error("No statement links found.");
+        }
+      } else {
+        throw new Error("No <ul> element found in statements.");
       }
+    } else {
+      throw new Error("No statements section found.");
     }
-    throw new Error();
   })
-  .catch(console.log("failed"));//window.location.href = "https://www.blocktransfer.com/404");
+  .catch(error => {
+    console.error("Error:", error.message);
+    // Handle the error or perform actions accordingly.
+    // For example, you can redirect to a 404 page here.
+    // window.location.href = "https://www.blocktransfer.com/404";
+  });

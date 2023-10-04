@@ -7,12 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function getNumOutstanding(code) {
     return fetch(`https://api.blocktransfer.com/assets/${code}`)
-      .then(response => {
-        if (response.status === 200) {
-          console.log(response.text())
-          return response.text().outstanding;
-        }
-      });
+      .then(response => return response.status === 200 ? response.text().outstanding : undefined);
+      .then(assetInfo => {
+        console.log(assetInfo);
+        return assetInfo.text();
+      })
   }
 
   function setFields(element, outstandingRaw, code) {

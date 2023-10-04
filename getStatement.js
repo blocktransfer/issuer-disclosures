@@ -18,16 +18,16 @@ fetch(parent)
   .then(html => {
     const issuerInfo = document.createElement("div");
     issuerInfo.innerHTML = html;
+    let statements = null;
     const H3s = issuerInfo.querySelectorAll("h3");
-    let targetSection = null;
     H3s.forEach(function(header) {
       if (LOOKING_FOR_TXT && header.textContent.includes(LOOKING_FOR_TXT)) {
-        targetSection = header.nextElementSibling;
+        statements = header.nextElementSibling;
       }
     });
-    const bulletList = targetSection.querySelector("ul");
-    if (bulletList) {
-      const pdfLinkArr = Array.from(bulletList.querySelectorAll("a"));
+    const list = statements.querySelector("ul");
+    if (list) {
+      const pdfLinkArr = Array.from(list.querySelectorAll("a"));
       console.log("pdfLinkArr:", pdfLinkArr);
       if (pdfLinkArr.length > 1) {
         pdfLinkArr.sort((a, b) => {

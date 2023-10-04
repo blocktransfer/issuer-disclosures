@@ -1,7 +1,8 @@
 const pathParts = window.location.href.split("/");
 const statementType = pathParts[pathParts.length - 2].toUpperCase();
-const parent = "/../index.html";
-fetch(parent)
+const parentDir = new URL("../", import.meta.url);
+const issuerInfo = new URL("index.html", parentDir);
+fetch(issuerInfo.href)
   .then(response => response.text())
   .then(html => {
     const searchLocalEnv = document.createElement("div");

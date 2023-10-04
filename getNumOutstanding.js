@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const elementsWithAssetCodeToReplaceWithOutstanding = document.querySelectorAll("[asset-code]");
   elementsWithAssetCodeToReplaceWithOutstanding.forEach(element => {
     const code = element.getAttribute("asset-code");
+    // logic here for outstanding, float, otherInfo
     getNumOutstanding(code).then(outstanding => setOutstanding(element, outstanding, code));
   });
 

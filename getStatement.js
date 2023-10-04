@@ -13,8 +13,6 @@ fetch(parent)
     searchLocalEnv.innerHTML = html;
     const headerElements = searchLocalEnv.querySelectorAll("h1, h2, h3, h4, h5, h6");
     let targetSection = null;
-    console.log("Got statementType:", statementType)
-    console.log("Got innerHTML:", html)
     headerElements.forEach(function(header) {
       console.log("Found header:", header)
       
@@ -31,6 +29,50 @@ fetch(parent)
       }
     });
     console.log("Got targetSection:", targetSection)
+    
+    // Assuming 'targetSection' is the desired section element
+    const ulElement = targetSection.querySelector('ul');
+    if (ulElement) {
+      const pdfLinkElement = ulElement.querySelector('a[href$=".pdf"]');
+      if (pdfLinkElement) {
+        const pdfLink = pdfLinkElement.getAttribute('href');
+        console.log("Found PDF link:", pdfLink);
+        // You can now use 'pdfLink' for further processing, like opening the PDF.
+      } else {
+        console.log("No PDF link found in the section.");
+      }
+    } else {
+      console.log("No <ul> element found in the section.");
+    }
+
+    // Assuming 'targetSection' is the desired section element
+  const ulElement = targetSection.querySelector("ul");
+  if (ulElement) {
+    const pdfLinkElements = Array.from(ulElement.querySelectorAll('a[href$=".pdf"]'));
+    
+    if (pdfLinkElements.length > 0) {
+      // Sort the PDF links based on their href attribute (file name)
+      pdfLinkElements.sort((a, b) => {
+        const fileNameA = a.getAttribute("href").split("/").pop(); // Get the file name
+        const fileNameB = b.getAttribute("href").split("/").pop(); // Get the file name
+        return fileNameA.localeCompare(fileNameB); // Sort alphabetically
+      });
+  
+      const mostRecentPdfLink = pdfLinkElements[0];
+      const pdfLink = mostRecentPdfLink.getAttribute('href');
+      console.log("Most recent PDF link:", pdfLink);
+      // You can now use 'pdfLink' for further processing, like opening the PDF.
+    } else {
+      console.log("No PDF links found in the section.");
+    }
+  } else {
+    console.log("No <ul> element found in the section.");
+  }
+  
+  console.log("FOUND: ", mostRecentPdfLink)
+    
+    
+    
     const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
     if (pdfLinks.length) {
       const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
@@ -43,6 +85,10 @@ fetch(parent)
         return dateB - dateA;
       });
       console.log("Got sortedLinks:", sortedLinks)
+      
+      
+      
+      
       const mostRecentLink = sortedLinks[0];
       if (mostRecentLink) {
         const file = mostRecentLink.getAttribute("href").split("/")[parts.length - 1];

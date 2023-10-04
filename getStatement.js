@@ -1,6 +1,13 @@
-const pathParts = window.location.href.split("/");
-const statementType = pathParts[pathParts.length - 2].toUpperCase();
 const parent = "../index.html";
+const CURR_PATH = window.location.href.split("/");
+const DOC_TYPE = CURR_PATH[CURR_PATH.length - 2].toUpperCase();
+const STATEMENT_CODES_DEF = {
+  "PNL": "Profit, Loss, & Retained Earnings",
+  "BAL": "Balance Sheets",
+  "CONTENT": "Issuer Reports",
+  "DEF": "Proxy Statements",
+};
+const LOOKING_FOR_TXT = STATEMENT_CODES_DEF[DOC_TYPE];
 
 function headerContainsText(header, text) {
   return header.innerText.includes(text);
@@ -12,16 +19,9 @@ fetch(parent)
     const issuerInfo = document.createElement("div");
     issuerInfo.innerHTML = html;
     const headerElements = issuerInfo.querySelectorAll("h1, h2, h3, h4, h5, h6");
-    const headerTextMap = {
-      "PNL": "Profit, Loss, & Retained Earnings",
-      "BAL": "Balance Sheets",
-      "CONTENT": "Issuer Reports",
-      "DEF": "Proxy Statements",
-    };
     let targetSection = null;
     headerElements.forEach(function(header) {
-      const targetText = headerTextMap[statementType];
-      if (targetText && header.textContent.includes(targetText)) {
+      if (LOOKING_FOR_TXT && header.textContent.includes(LOOKING_FOR_TXT)) {
         targetSection = header.nextElementSibling;
       }
     });

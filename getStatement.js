@@ -1,6 +1,6 @@
 const pathParts = window.location.href.split("/");
 const statementType = pathParts[pathParts.length - 2].toUpperCase();
-const parent = "../index.html";
+const parent = "/../index.html";
 fetch(parent)
   .then(response => response.text())
   .then(html => {
@@ -46,4 +46,4 @@ fetch(parent)
       // window.location.href = "https://www.blocktransfer.com/404";
     }
   })
-  .catch(window.location.href = "https://www.blocktransfer.com/404");
+  .catch(console.log("no parent"));//window.location.href = "https://www.blocktransfer.com/404");

@@ -35,7 +35,6 @@ fetch(parent)
         }
         if (statementLinks.length) {
           const mostRecentStatementLink = statementLinks[0];
-          console.log("SUCCESS", mostRecentStatementLink)
           window.location.href = mostRecentStatementLink.split("/")[1];
         } else {
           throw new Error("No statement links found.");
@@ -48,6 +47,5 @@ fetch(parent)
     }
   })
   .catch(error => {
-    console.log(error)
-    //window.location.href = "https://www.blocktransfer.com/404";
+    window.location.href = "https://www.blocktransfer.com/404?utm_source=issuersInfo404&utm_medium=error";
   });

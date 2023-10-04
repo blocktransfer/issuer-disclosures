@@ -8,6 +8,7 @@ fetch(parent)
     searchLocalEnv.innerHTML = html;
     const headerElements = searchLocalEnv.querySelectorAll("h1, h2, h3, h4, h5, h6");
     let targetSection = null;
+    console.log("Got statementType:", statementType)
     headerElements.forEach(function(header) {
       if (statementType === "PNL" && $(header).text().includes("Profit, Loss, & Retained Earnings")) {
         targetSection = header.nextElementSibling;
@@ -19,6 +20,7 @@ fetch(parent)
         targetSection = header.nextElementSibling;
       }
     });
+    console.log("Got targetSection:", targetSection)
     const pdfLinks = targetSection.querySelectorAll('a[href$=".pdf"]');
     if (pdfLinks.length) {
       const sortedLinks = Array.from(pdfLinks).sort((a, b) => {
@@ -30,17 +32,18 @@ fetch(parent)
         const dateB = getDateFromLink(b);
         return dateB - dateA;
       });
+      console.log("Got sortedLinks:", sortedLinks)
       const mostRecentLink = sortedLinks[0];
       if (mostRecentLink) {
-        const pdfLink = mostRecentLink.getAttribute("href");
-        const parts = pdfLink.split("/");
-        const name = parts[parts.length - 1];
-        if (name) {
-          window.location.href = name;
+        const file = mostRecentLink.getAttribute("href").split("/")[parts.length - 1];
+        console.log("Got mostRecentLink:", mostRecentLink)
+        if (file) {
+          window.location.href = file;
         }
       }
     } else {
-      window.location.href = "https://www.blocktransfer.com/404";
+      console.log("failed")
+      // window.location.href = "https://www.blocktransfer.com/404";
     }
   })
   .catch(window.location.href = "https://www.blocktransfer.com/404");

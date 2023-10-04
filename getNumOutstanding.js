@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function setFields(element, outstanding, code) {
     astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
+    let [integerPart, decimalPart] = data.split(".");
+    integerPart = parseInt(integerPart).toLocaleString("en-US");
+    const isDecimal = parseInt(decimalPart);
+    const formattedOut = isDecimal ? `${integerPart}.${decimalPart.replace(/0+$/, '')}` : integerPart;
     const currDateTime = new Date().toLocaleDateString("en-US", {
       day: "numeric",
       month: "long",
@@ -32,6 +36,6 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
     const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
     disclaimerPageElement.appendChild(dateDisclaimer);
-    element.innerHTML = `${outstanding} Shares Outstanding${astrix}`;
+    element.innerHTML = `${formattedOut} Shares Outstanding${astrix}`;
   }
 });

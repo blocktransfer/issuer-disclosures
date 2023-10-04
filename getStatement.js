@@ -27,17 +27,17 @@ fetch(parent)
     });
     const list = statements.querySelector("ul");
     if (list) {
-      const pdfLinkArr = Array.from(list.querySelectorAll("a"));
-      console.log("pdfLinkArr:", pdfLinkArr);
-      if (pdfLinkArr.length > 1) {
-        pdfLinkArr.sort((a, b) => {
+      const statementLinks = Array.from(list.querySelectorAll("a"));
+      console.log("statementLinks:", statementLinks);
+      if (statementLinks.length > 1) {
+        statementLinks.sort((a, b) => {
           const fileNameA = a.getAttribute("href").split("/").pop();
           const fileNameB = b.getAttribute("href").split("/").pop();
           return fileNameA.localeCompare(fileNameB);
         });
       }
-      if (pdfLinkArr.length) {
-        const mostRecentStatement = pdfLinkArr[0];
+      if (statementLinks.length) {
+        const mostRecentStatement = statementLinks[0];
         const statementLink = mostRecentStatement.getAttribute("href");
         console.log("Most recent PDF link:", statementLink);
       }

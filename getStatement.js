@@ -36,7 +36,7 @@ fetch(parent)
         if (statementLinks.length) {
           const mostRecentStatementLink = statementLinks[0];
           console.log("SUCCESS", mostRecentStatementLink)
-          window.location.href = mostRecentStatementLink;
+          window.location.href = mostRecentStatementLink.split("/")[1];
         } else {
           throw new Error("No statement links found.");
         }

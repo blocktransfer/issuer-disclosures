@@ -44,9 +44,7 @@ fetch(parent)
     } else {
       console.log("No <ul> element found in the section.");
     }
-
-    // Assuming 'targetSection' is the desired section element
-  const ulElement = targetSection.querySelector("ul");
+  
   if (ulElement) {
     const pdfLinkElements = Array.from(ulElement.querySelectorAll('a[href$=".pdf"]'));
     

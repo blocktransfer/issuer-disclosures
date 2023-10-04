@@ -37,7 +37,7 @@ fetch(parent)
           const mostRecentStatementLink = statementLinks[0];
           window.location.href = mostRecentStatementLink.split("/")[1];
         } else {
-          throw new Error("not found in bulleted list ${list}.");
+          throw new Error("links not found in ${DOC_TYPE} <ul> list.");
         }
       } else {
         throw new Error("list of docs not found for ${DOC_DISPLAY_TYPE}.");

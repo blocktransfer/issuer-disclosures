@@ -13,11 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function setFields(element, outstandingRaw, code) {
     astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
-    let [integerPart, decimalPart] = outstandingRaw.split(".");
-    integerPart = parseInt(integerPart).toLocaleString("en-US");
-    const isDecimal = parseInt(decimalPart);
-    const outstanding = isDecimal ? `${integerPart}.${decimalPart.replace(/0+$/, "")}` : integerPart;
-    const currDateTime = new Date().toLocaleDateString("en-US", {
+    const now = new Date().toLocaleDateString("en-US", {
       day: "numeric",
       month: "long",
       year: "numeric",
@@ -28,11 +24,18 @@ document.addEventListener("DOMContentLoaded", function() {
     dateDisclaimer.innerHTML = `
       <p style="margin-top: -5px; text-indent: 0;">
         <span class="small-symbol">*</span>
-        <span class="small-text">As of ${currDateTime}.</span>
+        <span class="small-text">As of ${now}.</span>
       </p>
     `;
     const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
     disclaimerPageElement.appendChild(dateDisclaimer);
-    element.innerHTML = `${outstanding} Shares Outstanding${astrix}`;
+    element.innerHTML = `${formatNum(outstanding)} Shares Outstanding${astrix}`;
+  }
+  
+  function formatNum(raw) {
+    let [integerPart, decimalPart] = raw.split(".");
+    integerPart = parseInt(integerPart).toLocaleString("en-US");
+    const isDecimal = parseInt(decimalPart);
+    return isDecimal ? `${integerPart}.${decimalPart.replace(/0+$/, "")}` : integerPart;
   }
 });

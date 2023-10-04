@@ -20,8 +20,8 @@ fetch(parent)
     issuerInfo.innerHTML = html;
     let statements = null;
     const H3s = issuerInfo.querySelectorAll("h3");
-    H3s.forEach(function(header) {
-      if (LOOKING_FOR_TXT && header.textContent.includes(LOOKING_FOR_TXT)) {
+    H3s.forEach(function (header) {
+      if (header.textContent.includes(LOOKING_FOR_TXT)) {
         statements = header.nextElementSibling;
       }
     });
@@ -29,18 +29,14 @@ fetch(parent)
       const list = statements.querySelector("ul");
       if (list) {
         const statementLinks = Array.from(list.querySelectorAll("a[href]"))
-        .map(a => a.getAttribute("href"));
-        console.log("statementLinks:", statementLinks);
-
+          .map(a => a.getAttribute("href"));
         if (statementLinks.length > 1) {
           statementLinks.sort((a, b) => a.localeCompare(b));
         }
-
         if (statementLinks.length) {
           const mostRecentStatementLink = statementLinks[0];
-          console.log("Most recent statement link:", mostRecentStatementLink);
-
-          // Perform the desired action here with mostRecentStatementLink.
+          // Redirect to the most recent statement link.
+          window.location.href = mostRecentStatementLink;
         } else {
           throw new Error("No statement links found.");
         }
@@ -52,8 +48,6 @@ fetch(parent)
     }
   })
   .catch(error => {
-    console.error("Error:", error.message);
-    // Handle the error or perform actions accordingly.
-    // For example, you can redirect to a 404 page here.
-    // window.location.href = "https://www.blocktransfer.com/404";
+    // Redirect to the 404 page in case of an error, including if LOOKING_FOR_TXT is not defined.
+    window.location.href = "https://www.blocktransfer.com/404";
   });

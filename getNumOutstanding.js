@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return `
       <p style="margin-top: -5px; text-indent: 0;">
         <span class="small-symbol">*</span>
-        <span class="small-text">As of ${getNow()}.</span>
+        <span class="small-text">As of ${now}.</span>
       </p>
     `;
   }

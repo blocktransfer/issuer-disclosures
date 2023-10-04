@@ -7,7 +7,7 @@ const STATEMENT_CODES_DEF = {
   "CONTENT": "Issuer Reports",
   "DEF": "Proxy Statements",
 };
-const LOOKING_FOR_TXT = STATEMENT_CODES_DEF[DOC_TYPE];
+const DOC_DISPLAY_TYPE = STATEMENT_CODES_DEF[DOC_TYPE];
 
 function headerContainsText(header, text) {
   return header.innerText.includes(text);
@@ -21,7 +21,7 @@ fetch(parent)
     let statements = null;
     const H3s = issuerInfo.querySelectorAll("h3");
     H3s.forEach(function (header) {
-      if (header.textContent.includes(LOOKING_FOR_TXT)) {
+      if (header.textContent.includes(DOC_DISPLAY_TYPE)) {
         statements = header.nextElementSibling;
       }
     });
@@ -48,6 +48,5 @@ fetch(parent)
     }
   })
   .catch(error => {
-    // Redirect to the 404 page in case of an error, including if LOOKING_FOR_TXT is not defined.
     window.location.href = "https://www.blocktransfer.com/404";
   });

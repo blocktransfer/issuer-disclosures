@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function setFields(element, outstanding, code) {
+    astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
     const currDateTime = new Date().toLocaleDateString("en-US", {
       day: "numeric",
       month: "long",
@@ -25,11 +26,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const dateDisclaimer = document.createElement("span");
     dateDisclaimer.innerHTML = `
       <p style="margin-top: -5px; text-indent: 0;">
-      <span class="small-symbol">*</span>
-      <span class="small-text">As of ${currDateTime}.</span></p>
+        <span class="small-symbol">*</span>
+        <span class="small-text">As of ${currDateTime}.</span>
+      </p>
     `;
     const disclaimerPageElement = document.getElementById(`dateDisclaimer${code}`);
     disclaimerPageElement.appendChild(dateDisclaimer);
-    element.innerHTML = `${outstanding} Shares Outstanding<span class="med-symbol">*</span>`;
+    element.innerHTML = `${outstanding} Shares Outstanding${astrix}`;
   }
 });

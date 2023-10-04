@@ -14,12 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   }
 
-  function setFields(element, data, code) {
-    let [integerPart, decimalPart] = data.split(".");
-    integerPart = parseInt(integerPart).toLocaleString("en-US");
-    const isDecimal = parseInt(decimalPart);
-    const formattedVal = isDecimal ? `${integerPart}.${decimalPart.replace(/0+$/, '')}` : integerPart;
-    element.innerHTML = `${formattedVal} Shares Outstanding<span style="font-size: .8em">*</span>`;
+  function setFields(element, outstanding, code) {
+    element.innerHTML = `${outstanding} Shares Outstanding<span style="font-size: .8em">*</span>`;
     const currDateTime = new Date().toLocaleDateString("en-US", {
       day: "numeric",
       month: "long",

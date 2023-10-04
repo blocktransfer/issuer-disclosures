@@ -47,5 +47,6 @@ fetch(parent)
     }
   })
   .catch(error => {
+    console.log("Error finding statement:" error)
     window.location.href = "https://www.blocktransfer.com/404?utm_source=issuersInfo404&utm_medium=error";
   });

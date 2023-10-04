@@ -9,6 +9,7 @@ fetch(parent)
     const headerElements = searchLocalEnv.querySelectorAll("h1, h2, h3, h4, h5, h6");
     let targetSection = null;
     console.log("Got statementType:", statementType)
+    console.log("Got innerHTML:", html)
     headerElements.forEach(function(header) {
       console.log("Found header:", header)
       if (statementType === "PNL" && $(header).text().includes("Profit, Loss, & Retained Earnings")) {

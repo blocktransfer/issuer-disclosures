@@ -35,7 +35,7 @@ fetch(parent)
         }
         if (statementLinks.length) {
           const mostRecentStatementLink = statementLinks[0];
-          // Redirect to the most recent statement link.
+          console.log("SUCCESS", mostRecentStatementLink)
           window.location.href = mostRecentStatementLink;
         } else {
           throw new Error("No statement links found.");

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(assetInfo => JSON.parse(assetInfo).outstanding)
   }
 
-  function setFields(element, outstandingRaw, code) {
+  function setFields(element, outstanding, code) {
     astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
     const now = new Date().toLocaleDateString("en-US", {
       day: "numeric",

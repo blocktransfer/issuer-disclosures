@@ -1,6 +1,11 @@
 const pathParts = window.location.href.split("/");
 const statementType = pathParts[pathParts.length - 2].toUpperCase();
 const parent = "../index.html";
+
+function headerContainsText(header, text) {
+  return header.innerText.includes(text);
+}
+
 fetch(parent)
   .then(response => response.text())
   .then(html => {
@@ -12,13 +17,16 @@ fetch(parent)
     console.log("Got innerHTML:", html)
     headerElements.forEach(function(header) {
       console.log("Found header:", header)
-      if (statementType === "PNL" && $(header).text().includes("Profit, Loss, & Retained Earnings")) {
-        targetSection = header.nextElementSibling;
-      } else if (statementType === "BAL" && $(header).text().includes("Balance Sheets")) {
-        targetSection = header.nextElementSibling;
-      } else if (statementType === "CONTENT" && $(header).text().includes("Issuer Reports")) {
-        targetSection = header.nextElementSibling;
-      } else if (statementType === "DEF" && $(header).text().includes("Proxy Statements")) {
+      
+      const headerTextMap = {
+        "PNL": "Profit, Loss, & Retained Earnings",
+        "BAL": "Balance Sheets",
+        "CONTENT": "Issuer Reports",
+        "DEF": "Proxy Statements",
+      };
+      const targetText = headerTextMap[statementType];
+      if (targetText && header.textContent.includes(targetText)) {
+        console.log("Found desired item:", header);
         targetSection = header.nextElementSibling;
       }
     });

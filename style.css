@@ -19,6 +19,9 @@ img.issuer-logo {
 .indent {
   text-indent: 2em;
 }
+.noindent {
+    text-indent: 0;
+}
 p {
   text-indent: 2em
 }

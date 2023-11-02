@@ -8,16 +8,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function getNumOutstanding(code) {
     return fetch(`https://api.blocktransfer.com/assets/${code}/outstanding`)
-      .then(response => (response.status === 200 ? response.text() : undefined))
+      .then(response => (response.status === 200 ? response.text() : undefined));
   }
 
   function setOutstanding(element, outstanding, code) {
-    astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
+    const astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
     element.innerHTML = `${outstanding} Shares Outstanding${astrix}`;
   }
   
   function formatNum(raw) {
-    console.log(raw)
+    console.log(raw);
     let [integerPart, decimalPart] = raw.toString().split(".");
     integerPart = parseInt(integerPart).toLocaleString("en-US");
     const isDecimal = parseInt(decimalPart);

@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   function formatNum(raw) {
-    console.log(typeof raw)
-    let [integerPart, decimalPart] = raw.split(".");
+    let [integerPart, decimalPart] = raw.toString().split(".");
     integerPart = parseInt(integerPart).toLocaleString("en-US");
     const isDecimal = parseInt(decimalPart);
     return isDecimal ? `${integerPart}.${decimalPart.replace(/0+$/, "")}` : integerPart;

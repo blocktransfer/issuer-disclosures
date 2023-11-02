@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function getNumOutstanding(code) {
     return fetch(`https://api.blocktransfer.com/assets/${code}/outstanding`)
       .then(response => (response.status === 200 ? response.text() : undefined))
-      .then(assetInfo => JSON.parse(assetInfo))
+      .then(console.log(response))
+      .then(console.log(typeof response))
   }
 
   function setOutstanding(element, outstanding, code) {

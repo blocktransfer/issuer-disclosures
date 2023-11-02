@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function setOutstanding(element, outstanding, code) {
     astrix = "<span style='font-size: 0.8em; vertical-align: top;'>*</span>";
-    element.innerHTML = `${formatNum(outstanding)} Shares Outstanding${astrix}`;
+    element.innerHTML = `${outstanding} Shares Outstanding${astrix}`;
   }
   
   function formatNum(raw) {

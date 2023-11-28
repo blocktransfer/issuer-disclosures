@@ -2,10 +2,10 @@ const parent = "../index.html";
 const CURR_PATH = window.location.href.split("/");
 const DOC_TYPE = CURR_PATH[CURR_PATH.length - 2].toUpperCase();
 const STATEMENT_CODES_DEF = {
-  "PNL": "Profit, Loss, & Retained Earnings",
   "BAL": "Balance Sheets",
-  "CONTENT": "Issuer Reports",
   "DEF": "Proxy Statements",
+  "DOC": "Issuer Reports",
+  "PNL": "Profit, Loss, & Retained Earnings",
 };
 const DOC_DISPLAY_TYPE = STATEMENT_CODES_DEF[DOC_TYPE];
 

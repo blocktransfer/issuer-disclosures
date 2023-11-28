@@ -32,7 +32,7 @@ Leading zeros are excluded from CIKs and file name months or days.
   - YYYY-M-D_Quarterly.pdf
   - YYYY-M-D_Annual.pdf
 
-- Issuer Reports (content)
+- Issuer Reports (DOC)
   - YYYY-M-D_Quarterly.pdf
   - YYYY-M-D_Annual.pdf
   - YYYY-M-D_Other.pdf
@@ -51,7 +51,7 @@ Leading zeros are excluded from CIKs and file name months or days.
   - YYYY-M-D_Quarterly.pdf
   - YYYY-M-D_Annual.pdf
 
-- Issuer Reports (content)
+- Issuer Reports (DOC)
   - YYYY-M-D_Quarterly.pdf
   - YYYY-M-D_Annual.pdf
   - YYYY-M-D_Other.pdf

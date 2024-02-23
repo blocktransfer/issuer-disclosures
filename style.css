@@ -35,3 +35,8 @@ section {
 .small-text {
   font-size: 0.8em;
 }
+.descItem {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 15pt;
+}

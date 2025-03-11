@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Block Transfer - Issuers.info</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<div class="main">
+  <a href="https://www.blocktransfer.com?utm_source=blocktransfer&utm_medium=referral&utm_campaign=issuers.info">
+    <img class="issuer-logo" src="logo.png" alt="Block Transfer Logo" style="width: 50vw">
+  </a>
+  <h2>BlockTrans Syndicate</h2>
+    <!-- <h4>Previously Such and Such Co. (CA)</h4> -->
+    <section>
+      <h4>Principle executive office</h4>
+        <p>99 Wall St #4640, New York, NY 10005</p>
+      <h4>Principle place of business</h4>
+        <p>99 Wall St #4640, New York, NY 10005</p>
+    </section>
+  <h2>Description</h2>
+  <section>
+    <p style="text-indent: 0;">
+      Block Transfer is building a decentralized stock transfer protocol.
+    </p>
+      <div class="descItem">Business</div>
+    <p>
+      The Syndicate presently has no business, as more thoroughly disclosred on their public blog. Notwithstanding, they attained their first issuer in 2023 and have been steadfastly recording such company's securityholding details through TAD3.
+    </p>
+      <div class="descItem">Facilities</div>
+    <p>
+      Remote only.
+    </p>
+      <div class="descItem">Products or Services</div>
+    <p>
+      Transfer-agent accounting.
+    </p>
+  </section>
+  <h2>Securities</h2>
+  <section>
+    <h3>Common Stock</h3>
+    <section>
+      <h4>Authorized</h4>
+        <p>1,500</p>
+      <h4>Class</h4>
+        <p>Common</p>
+      <h4>Dividend History</h4>
+        <p>None</p>
+      <h4>Par</h4>
+        <p>$0</p>
+      <!-- <h4 id="getNumOutstanding" asset-code="1846058ORD">Shares Outstanding</h4>-->
+        <!---
+          <ul>
+            <li> Dec 31, 2023 - #</li>
+          </ul> 
+        --->
+      <h4>Ticker</h4>
+        <p>$---<span class="small-symbol">&dagger;</span></p>
+    </section>
+    <div id="securitiesDisclaimer" style="margin-top: 35px; text-indent: 0;">
+      <div id="tickerDisclaimer"></div>
+      <div id="dateDisclaimer"></div>
+    </div>
+    <script>
+      document.getElementById("tickerDisclaimer").innerHTML = `
+        <span class="small-symbol">&dagger;</span>
+        <span class="small-text">Designated only by Block Transfer per Issuer preference.</span>
+      `;
+      const now = new Date()
+        .toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+      });
+      document.getElementById("dateDisclaimer").innerHTML = `
+        <p style="margin-top: -5px; text-indent: 0;">
+          <span class="small-symbol">*</span>
+          <span class="small-text">As of ${now}.</span>
+        </p>
+      `;
+    </script>
+  </section>  
+  <h2>Insiders</h2>
+    <section>
+      <h3>Directors</h3>
+        <ul>
+          <li>John Wooten - Principal</li>
+        </ul>
+    </section>
+  <h2>Financial Statements</h2>
+  <section>
+    <h3>Profit, Loss, & Retained Earnings</h3>
+      <section>
+        <h4>Annual</h4>
+          <ul>
+            <li><a href="PNL/2024-12-31_Annual.pdf">Q4 2024</a></li>
+          </ul>
+        <!-- <h4>Quarterly</h4> -->
+      </section>
+    <h3>Balance Sheet</h3>
+      <section>
+        <h4>Annual</h4>
+          <ul>
+            <li><a href="BAL/2024-12-31_Annual.pdf">Q4 2024</a></li>
+          </ul>
+      </section>
+  </section>
+  <h2>Contact the Issuer</h2>
+  <section>
+    <h3>Regarding Business Activities</h3>
+      <section>
+        <p class="noindent">The Issuer's investor relations team is avaliable at:</p>
+          <ul>
+            <li>99 Wall St #4640, New York, NY 10005</li>
+            <li><p class="noindent"><a href="mailto:support@blocktransfer.com?subject=Question%20Regarding%20Business%20Activities" style="word-break: break-all;">support@blocktransfer.com</a></p></li>
+            <li><p class="noindent"><a href="tel:+12092843577">(209) BT-HELPS</a></p></li>
+          </ul>
+      </section>
+    <h3>Regarding Your Investor Account</h3>
+      <section>
+        <p class="noindent">The Issuer acts as their own transfer agent and may be contacted at the information above.</p>
+      </section>
+  </section>
+  <h2>Issuer Registration</h2>
+  <section>  
+    <h3>SEC CIK: <a href="https://www.sec.gov/edgar/browse/?CIK=1846058">1846058</a></h3>
+    <h4 style="margin-top: -20px; text-indent: 5px;">Not a shell company</h4>
+    <h3>EIN: 86-1517229</h3>
+    <h3>SIC Code: 8721</h3>
+    <h3>Jurisdiction: US/DE</h3>
+    <h3>Fiscal Year End: December 31</h3>
+    <h3>Website: <a href="https://www.blocktransfer.com?utm_source=blocktransfer&utm_medium=referral&utm_campaign=issuers.info">www.blocktransfer.com</a></h3>
+  </section>
+<div>
+<!-- todo: Load this dynamically from "https://blocktransfer.com/issuers/CIK" -->
+<!-- is it possible / easy to replace all uses of 1984803 with CIK from the path? -->
+<script src="../getNumOutstanding.js"></script>
+<script src="../getFooter.js"></script>
+</body>
+</html>

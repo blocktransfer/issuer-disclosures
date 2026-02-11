@@ -40,3 +40,12 @@ section {
   font-weight: bold;
   margin-top: 25pt;
 }
+.notice {
+  border: 8px solid #e26848;
+  background: #144f9b;
+  padding: 21px 21px;
+  border-radius: 18px;
+  margin: 21px 0;
+  text-indent: 0;
+  color: #ffff;
+}

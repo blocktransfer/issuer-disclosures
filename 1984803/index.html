@@ -54,7 +54,7 @@
         <p>None</p>
       <h4>Par</h4>
         <p>$0.01</p>
-      <h4>Shares Outstanding</h4>
+      <h4>81,000,000 Final Shares Outstanding</h4>
         <ul>
           <li> Dec 31, 2023 - 80,000,000 outstanding</li>
           <li> Dec 31, 2024 - 81,000,000 outstanding</li>
@@ -64,29 +64,11 @@
         <p>$LAYLOR<span class="small-symbol">&dagger;</span></p>
     </section>
     <div id="securitiesDisclaimer" style="margin-top: 35px; text-indent: 0;">
-      <div id="tickerDisclaimer"></div>
-      <div id="dateDisclaimer"></div>
-    </div>
-    <script>
-      document.getElementById("tickerDisclaimer").innerHTML = `
+      <p style="margin-top: -5px; text-indent: 0;">
         <span class="small-symbol">&dagger;</span>
         <span class="small-text">Designated only by Block Transfer per Issuer preference.</span>
-      `;
-      const now = new Date()
-        .toLocaleDateString("en-US", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-          hour: "2-digit",
-          minute: "2-digit"
-      });
-      document.getElementById("dateDisclaimer").innerHTML = `
-        <p style="margin-top: -5px; text-indent: 0;">
-          <span class="small-symbol">*</span>
-          <span class="small-text">As of ${now}.</span>
-        </p>
-      `;
-    </script>
+      </p>
+    </div>
   </section>  
   <h2>Insiders</h2>
     <section>

@@ -1,6 +1,6 @@
 # Issuer Materials - [Issuers.info](https://issuers.info)
 
-This repository is managed by Block Transfer and provides a secure and organized way to publicly host disclosure documents, such as financial statements, posted by our transfer agent clients.
+This repository is managed by BlockTransfer and provides a secure and organized way to publicly host disclosure documents, such as financial statements, posted by our transfer agent clients.
 
 ## How to Use
 

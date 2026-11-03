@@ -1,12 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-  <title>BlockTransfer - Issuers.info</title>
+  <title>BlockTrans Syndicate (Archived) - Issuers.info</title>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
-<body>
+<body data-tad-status="archived">
 <div class="main">
+  <div class="notice">
+    <strong>Notice:</strong> This issuer is no longer active in the TAD3 issuer directory as of November 3, 2026. These disclosure materials are preserved for historical reference and may not reflect current information.
+  </div>
   <a href="https://www.blocktransfer.com?utm_source=blocktransfer&utm_medium=referral&utm_campaign=issuers.info">
     <img class="issuer-logo" src="logo.png" alt="BlockTransfer Logo" style="width: 50vw">
   </a>
@@ -48,7 +52,7 @@
         <p>None</p>
       <h4>Par</h4>
         <p>$0</p>
-      <h4 id="getNumOutstanding" asset-code="1846058ORD">Shares Outstanding</h4>
+      <h4>1,500 Last Reported Shares Outstanding</h4>
         <ul>
           <li> Dec 31, 2024 - 1,500 outstanding</li>
           <li> Dec 31, 2025 - 1,500 outstanding</li>
@@ -57,29 +61,14 @@
         <p>$TAD<span class="small-symbol">&dagger;</span></p>
     </section>
     <div id="securitiesDisclaimer" style="margin-top: 35px; text-indent: 0;">
-      <div id="tickerDisclaimer"></div>
-      <div id="dateDisclaimer"></div>
-    </div>
-    <script>
-      document.getElementById("tickerDisclaimer").innerHTML = `
+      <p style="margin-top: -5px; text-indent: 0;">
         <span class="small-symbol">&dagger;</span>
         <span class="small-text">Designated only by BlockTransfer per Issuer preference.</span>
-      `;
-      const now = new Date()
-        .toLocaleDateString("en-US", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-          hour: "2-digit",
-          minute: "2-digit"
-      });
-      document.getElementById("dateDisclaimer").innerHTML = `
-        <p style="margin-top: -5px; text-indent: 0;">
-          <span class="small-symbol">*</span>
-          <span class="small-text">As of ${now}.</span>
-        </p>
-      `;
-    </script>
+      </p>
+      <p style="margin-top: -5px; text-indent: 0;">
+        <span class="small-text">Shares outstanding last reported December 31, 2025. Page archived November 3, 2026.</span>
+      </p>
+    </div>
   </section>  
   <h2>Insiders</h2>
     <section>
@@ -131,7 +120,7 @@
       </section>
     <h3>Regarding Your Investor Account</h3>
       <section>
-        <p class="noindent">The Issuer acts as their own transfer agent and may be contacted at the information above.</p>
+        <p class="noindent">For current transfer-agent or investor-account questions, contact the Issuer using the information above.</p>
       </section>
   </section>
   <h2>Issuer Registration</h2>
@@ -147,7 +136,6 @@
 <div>
 <!-- todo: Load this dynamically from "https://blocktransfer.com/issuers/CIK" -->
 <!-- is it possible / easy to replace all uses of 1984803 with CIK from the path? -->
-<script src="../getNumOutstanding.js"></script>
 <script src="../getFooter.js"></script>
 </body>
 </html>

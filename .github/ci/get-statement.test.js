@@ -26,9 +26,9 @@ async function navigate(route, links, ok = true) {
 }
 
 test("selects latest statement across all page links without headings", async () => {
-  assert.equal(await navigate("PNL/", [
-    "PNL/2024-12-31_Annual.pdf", "BAL/2026-12-31_Annual.pdf", "PNL/2025-12-31_Annual.pdf",
-  ]), "https://issuers.info/1846058/PNL/2025-12-31_Annual.pdf");
+  assert.equal(await navigate("pnl/", [
+    "pnl/2024-12-31_annual.pdf", "bal/2026-12-31_annual.pdf", "pnl/2025-12-31_annual.pdf",
+  ]), "https://issuers.info/1846058/pnl/2025-12-31_annual.pdf");
 });
 
 test("compares zero-padded date strings alphabetically and supports lowercase paths", async () => {
@@ -39,14 +39,14 @@ test("compares zero-padded date strings alphabetically and supports lowercase pa
 });
 
 test("supports balance sheets and slashless routes without headings", async () => {
-  assert.equal(await navigate("BAL", ["BAL/2025-12-31_Annual.pdf"]),
-    "https://issuers.info/1846058/BAL/2025-12-31_Annual.pdf");
+  assert.equal(await navigate("bal", ["bal/2025-12-31_annual.pdf"]),
+    "https://issuers.info/1846058/bal/2025-12-31_annual.pdf");
 });
 
 test("selects issuer reports and proxy statements independently of headings", async () => {
-  const links = ["DOC/2024-2-23_Deck.pdf", "DOC/2023-10-18_Revocation.pdf", "DEF/2025-1-1_Proxy.pdf"];
-  assert.equal(await navigate("DOC/", links), "https://issuers.info/1846058/DOC/2024-2-23_Deck.pdf");
-  assert.equal(await navigate("DEF/", links), "https://issuers.info/1846058/DEF/2025-1-1_Proxy.pdf");
+  const links = ["doc/2024-2-23_deck.pdf", "doc/2023-10-18_revocation.pdf", "def/2025-1-1_proxy.pdf"];
+  assert.equal(await navigate("doc/", links), "https://issuers.info/1846058/doc/2024-2-23_deck.pdf");
+  assert.equal(await navigate("def/", links), "https://issuers.info/1846058/def/2025-1-1_proxy.pdf");
 });
 
 test("ignores unrelated, malformed, and impossible dates", async () => {
@@ -57,14 +57,14 @@ test("ignores unrelated, malformed, and impossible dates", async () => {
 
 test("preserves fallback for empty statements, unknown types, or failed issuer requests", async () => {
   const fallback = "https://www.blocktransfer.com/404?utm_source=issuersInfo404&utm_medium=error";
-  assert.equal(await navigate("BAL/", []), fallback);
-  assert.equal(await navigate("BAL/", ["BAL/2025-12-31_Annual.pdf"], false), fallback);
-  assert.equal(await navigate("OTHER/", ["OTHER/2025-12-31_Annual.pdf"]), fallback);
+  assert.equal(await navigate("bal/", []), fallback);
+  assert.equal(await navigate("bal/", ["bal/2025-12-31_annual.pdf"], false), fallback);
+  assert.equal(await navigate("other/", ["other/2025-12-31_annual.pdf"]), fallback);
 });
 
 test("validates leap days without timestamps and sorts across years", async () => {
-  assert.equal(await navigate("PNL/", [
-    "PNL/2023-2-29_Annual.pdf", "PNL/2024-2-29_Annual.pdf", "PNL/2023-12-31_Annual.pdf",
-    "PNL/2100-2-29_Annual.pdf", "PNL/2024-0-1_Annual.pdf", "PNL/2024-2-0_Annual.pdf",
-  ]), "https://issuers.info/1846058/PNL/2024-2-29_Annual.pdf");
+  assert.equal(await navigate("pnl/", [
+    "pnl/2023-2-29_annual.pdf", "pnl/2024-2-29_annual.pdf", "pnl/2023-12-31_annual.pdf",
+    "pnl/2100-2-29_annual.pdf", "pnl/2024-0-1_annual.pdf", "pnl/2024-2-0_annual.pdf",
+  ]), "https://issuers.info/1846058/pnl/2024-2-29_annual.pdf");
 });

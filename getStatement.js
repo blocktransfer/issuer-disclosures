@@ -3,13 +3,7 @@ const pathParts = current.pathname.split("/").filter(Boolean);
 if (pathParts[pathParts.length - 1] === "index.html") pathParts.pop();
 const DOC_TYPE = (pathParts.pop() || "").toUpperCase();
 const parent = new URL("/" + pathParts.join("/") + "/index.html", current);
-const STATEMENT_CODES_DEF = {
-  "BAL": "Balance Sheet",
-  "DEF": "Proxy Statements",
-  "DOC": "Issuer Reports",
-  "PNL": "Profit, Loss, & Retained Earnings",
-};
-const DOC_DISPLAY_TYPE = STATEMENT_CODES_DEF[DOC_TYPE];
+const STATEMENT_CODES = ["BAL", "DEF", "DOC", "PNL"];
 
 function statementDate(href) {
   const match = /^([a-z]+)\/(\d{4})-(\d{1,2})-(\d{1,2})_[^/]+\.pdf$/i.exec(href);
@@ -26,16 +20,12 @@ fetch(parent.href)
     return response.text();
   })
   .then(html => {
+    if (!STATEMENT_CODES.includes(DOC_TYPE)) throw new Error(`Unknown statement type ${DOC_TYPE}.`);
     const issuerInfo = document.createElement("div");
     issuerInfo.innerHTML = html;
-    const header = Array.from(issuerInfo.querySelectorAll("h3"))
-      .find(header => DOC_DISPLAY_TYPE && header.textContent.includes(DOC_DISPLAY_TYPE));
-    const statements = header && header.nextElementSibling;
-    if (!statements) throw new Error(`H3 content for type ${DOC_TYPE}.`);
-
     let latest = null;
     let latestDate = -Infinity;
-    for (const link of statements.querySelectorAll("ul a[href]")) {
+    for (const link of issuerInfo.querySelectorAll("a[href]")) {
       const href = link.getAttribute("href");
       const date = statementDate(href);
       if (date !== null && date > latestDate) {

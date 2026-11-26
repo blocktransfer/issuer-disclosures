@@ -20,39 +20,39 @@ Leading zeros are excluded from CIKs and file name months or days.
 
 ### Client A (CIK: XXXXXXXXXX)
 
-- Statements of Profit, Loss, and Retained Earnings [pnl]
+- Statements of Profit, Loss, and Retained Earnings (`pnl`)
   - YYYY-M-D_quarterly.pdf
   - YYYY-M-D_annual.pdf
 
-- Balance Sheets [bal]
+- Balance Sheets (`bal`)
   - YYYY-M-D_quarterly.pdf
   - YYYY-M-D_annual.pdf
 
-- Issuer Reports [doc]
+- Issuer Reports (`doc`)
   - YYYY-M-D_quarterly.pdf
   - YYYY-M-D_annual.pdf
   - YYYY-M-D_other.pdf
 
-- Definitive Proxy Statements [def]
+- Definitive Proxy Statements (`def`)
   - YYYY-M-D_annual.pdf
   - YYYY-M-D_special.pdf
 
 ### Client B (CIK: YYYYYYYYYY)
 
-- Statements of Profit, Loss, and Retained Earnings [pnl]
+- Statements of Profit, Loss, and Retained Earnings (`pnl`)
   - YYYY-M-D_quarterly.pdf
   - YYYY-M-D_annual.pdf
 
-- Balance Sheets [bal]
+- Balance Sheets (`bal`)
   - YYYY-M-D_quarterly.pdf
   - YYYY-M-D_annual.pdf
 
-- Issuer Reports [doc]
+- Issuer Reports (`doc`)
   - YYYY-M-D_quarterly.pdf
   - YYYY-M-D_annual.pdf
   - YYYY-M-D_other.pdf
 
-- Definitive Proxy Statements [def]
+- Definitive Proxy Statements (`def`)
   - YYYY-M-D_annual.pdf
   - YYYY-M-D_special.pdf
 

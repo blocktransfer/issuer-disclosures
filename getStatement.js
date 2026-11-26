@@ -9,9 +9,12 @@ function statementDate(href) {
   const match = /^([a-z]+)\/(\d{4})-(\d{1,2})-(\d{1,2})_[^/]+\.pdf$/i.exec(href);
   if (!match || match[1].toUpperCase() !== DOC_TYPE) return null;
   const [year, month, day] = match.slice(2).map(Number);
-  const date = new Date(Date.UTC(year, month - 1, day));
-  if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) return null;
-  return date.getTime();
+  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (year < 1 || month < 1 || month > 12 || day < 1 || day > days[month - 1]) return null;
+
+  // Reporting dates have no time-of-day metadata; ISO date strings sort chronologically.
+  return [match[2], match[3].padStart(2, "0"), match[4].padStart(2, "0")].join("-");
 }
 
 fetch(parent.href)
@@ -24,7 +27,7 @@ fetch(parent.href)
     const issuerInfo = document.createElement("div");
     issuerInfo.innerHTML = html;
     let latest = null;
-    let latestDate = -Infinity;
+    let latestDate = "";
     for (const link of issuerInfo.querySelectorAll("a[href]")) {
       const href = link.getAttribute("href");
       const date = statementDate(href);

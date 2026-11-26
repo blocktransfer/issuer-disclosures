@@ -9,7 +9,7 @@ async function navigate(route, links, ok = true) {
   const location = { href: `https://issuers.info/1846058/${route}` };
   const selectors = [];
   await vm.runInNewContext(script, {
-    URL, window: { location }, console: { log() {} },
+    URL, Date: undefined, window: { location }, console: { log() {} },
     document: { createElement: () => ({
       querySelectorAll(selector) {
         selectors.push(selector);
@@ -31,7 +31,7 @@ test("selects latest statement across all page links without headings", async ()
   ]), "https://issuers.info/1846058/PNL/2025-12-31_Annual.pdf");
 });
 
-test("compares unpadded dates numerically and supports lowercase paths", async () => {
+test("compares zero-padded date strings alphabetically and supports lowercase paths", async () => {
   assert.equal(await navigate("pnl/index.html?ref=test", [
     "pnl/2025-9-30_quarterly.pdf", "pnl/2025-12-31_annual.pdf", "pnl/2025-2-8_quarterly.pdf",
     "pnl/2025-12-8_quarterly.pdf",
@@ -60,4 +60,11 @@ test("preserves fallback for empty statements, unknown types, or failed issuer r
   assert.equal(await navigate("BAL/", []), fallback);
   assert.equal(await navigate("BAL/", ["BAL/2025-12-31_Annual.pdf"], false), fallback);
   assert.equal(await navigate("OTHER/", ["OTHER/2025-12-31_Annual.pdf"]), fallback);
+});
+
+test("validates leap days without timestamps and sorts across years", async () => {
+  assert.equal(await navigate("PNL/", [
+    "PNL/2023-2-29_Annual.pdf", "PNL/2024-2-29_Annual.pdf", "PNL/2023-12-31_Annual.pdf",
+    "PNL/2100-2-29_Annual.pdf", "PNL/2024-0-1_Annual.pdf", "PNL/2024-2-0_Annual.pdf",
+  ]), "https://issuers.info/1846058/PNL/2024-2-29_Annual.pdf");
 });

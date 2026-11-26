@@ -31,10 +31,10 @@ test("selects latest statement across all page links without headings", async ()
   ]), "https://issuers.info/1846058/pnl/2025-12-31_annual.pdf");
 });
 
-test("compares zero-padded date strings alphabetically and supports lowercase paths", async () => {
+test("compares calendar dates numerically with padded and unpadded filenames", async () => {
   assert.equal(await navigate("pnl/index.html?ref=test", [
-    "pnl/2025-9-30_quarterly.pdf", "pnl/2025-12-31_annual.pdf", "pnl/2025-2-8_quarterly.pdf",
-    "pnl/2025-12-8_quarterly.pdf",
+    "pnl/2025-9-30_quarterly.pdf", "pnl/2025-12-31_annual.pdf", "pnl/2025-02-08_quarterly.pdf",
+    "pnl/2025-12-08_quarterly.pdf",
   ]), "https://issuers.info/1846058/pnl/2025-12-31_annual.pdf");
 });
 
@@ -67,4 +67,10 @@ test("validates leap days without timestamps and sorts across years", async () =
     "pnl/2023-2-29_annual.pdf", "pnl/2024-2-29_annual.pdf", "pnl/2023-12-31_annual.pdf",
     "pnl/2100-2-29_annual.pdf", "pnl/2024-0-1_annual.pdf", "pnl/2024-2-0_annual.pdf",
   ]), "https://issuers.info/1846058/pnl/2024-2-29_annual.pdf");
+});
+
+test("preserves the exact filename when a padded date wins", async () => {
+  assert.equal(await navigate("pnl/", [
+    "pnl/2025-2-9_quarterly.pdf", "pnl/2025-02-10_quarterly.pdf",
+  ]), "https://issuers.info/1846058/pnl/2025-02-10_quarterly.pdf");
 });

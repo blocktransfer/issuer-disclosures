@@ -13,8 +13,8 @@ function statementDate(href) {
   const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   if (year < 1 || month < 1 || month > 12 || day < 1 || day > days[month - 1]) return null;
 
-  // Reporting dates have no time-of-day metadata; ISO date strings sort chronologically.
-  return [match[2], match[3].padStart(2, "0"), match[4].padStart(2, "0")].join("-");
+  // Compare calendar dates numerically without padding or time zones.
+  return year * 10000 + month * 100 + day;
 }
 
 fetch(parent.href)
@@ -27,7 +27,7 @@ fetch(parent.href)
     const issuerInfo = document.createElement("div");
     issuerInfo.innerHTML = html;
     let latest = null;
-    let latestDate = "";
+    let latestDate = 0;
     for (const link of issuerInfo.querySelectorAll("a[href]")) {
       const href = link.getAttribute("href");
       const date = statementDate(href);
